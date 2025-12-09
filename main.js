@@ -1607,11 +1607,11 @@ const celestialBodies = [
         name: "Cassini–Huygens",
         modelPath: "Cassini–Huygens Space Probe.glb",
         size: 0.08, // Appropriate size relative to Saturn
-        // Elliptical orbit parameters based on real Cassini mission
+        // Elliptical orbit parameters - same as JUNO but 2x larger
         orbit: {
-          semiMajorAxis: 20, // Average distance in planet radii (Cassini's typical orbit)
-          eccentricity: 0.55, // Highly elliptical orbit (realistic for Cassini)
-          inclination: 0.15, // Slight inclination in radians (near equatorial)
+          semiMajorAxis: 7, // 2x JUNO's semiMajorAxis (3.5 * 2 = 7)
+          eccentricity: 0.4, // Same as JUNO
+          inclination: 0.05, // Same as JUNO
           argumentOfPeriapsis: 0, // Argument of periapsis
           meanAnomaly: 0, // Starting position
           orbitalPeriod: 16 // Days (Cassini's typical orbital period)
