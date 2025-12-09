@@ -361,6 +361,8 @@ const moonDescriptions = {
     "Quaoar-Weywot": "Weywot is the only known moon of the Kuiper Belt object Quaoar, discovered in 2007 by Michael Brown using the Hubble Space Telescope, and is named after the sky god and son of Quaoar in Tongva mythology. The moon has an estimated diameter of about 170 kilometers and orbits Quaoar at a distance of approximately 14,500 kilometers, taking about 12 days to complete one orbit. Observations of Weywot's orbit have allowed scientists to determine Quaoar's mass and revealed the surprising discovery in 2023 that Quaoar has a ring system located outside the Roche limit, challenging our understanding of ring formation.",
     "Earth-OREST": "OREST, the wandering satellite - discovery year 2019 - a traveling satellite in the cold cosmos, known for its attraction to the new and unknown. A small satellite in the vast unknown cosmos with the whole world ahead. Such small satellites always remind us that there is always a path ahead that no one has walked before. For it, space is not silence and darkness, but an infinite world of possibilities that are just waiting to be discovered.",
     "Earth-EMMA": "EMMA, the elegant satellite - discovery year 2020 - at a time when the world stopped, she came to revive it and give colors to everyday grayness. EMMA carves her own path in the darkness - a small but significant road that reminds us: even in the boundless cosmos there is a place for warmth and tenderness. A symbol of quiet rebirth and that humanity is capable of sincerity.",
+    "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) is a NASA spacecraft orbiting Mars since 2014, studying the planet's upper atmosphere, ionosphere, and interactions with the Sun and solar wind. The mission aims to understand how Mars lost its atmosphere and water over time, providing crucial insights into the planet's climate history and potential for past habitability. MAVEN's elliptical orbit allows it to sample different altitudes of the Martian atmosphere.",
+    "Jupiter-Juno": "Juno is a NASA spacecraft that arrived at Jupiter in 2016, entering a highly elliptical polar orbit to study the gas giant's composition, gravity field, magnetic field, and polar magnetosphere. The mission has revealed stunning details about Jupiter's atmosphere, including its Great Red Spot, and has provided insights into the planet's formation and evolution. Juno's unique orbit allows it to avoid Jupiter's intense radiation belts while conducting close-up observations.",
     "Orcus-Vanth": "Vanth is the only known moon of the dwarf planet candidate Orcus, discovered in 2005 by Mike Brown and his team using the Hubble Space Telescope, and is unusually large relative to Orcus, comprising about 3% of the system's total mass. The moon has an estimated diameter of about 443 kilometers, making it one of the largest known trans-Neptunian object satellites, and orbits Orcus at a distance of approximately 9,000 kilometers, taking about 9.5 days to complete one orbit. Vanth's large size relative to Orcus suggests it may have formed from a major collision, similar to how Earth's Moon formed, and its orbit is nearly circular and aligned with Orcus's equator.",
     "Gonggong-Xiangliu": "Xiangliu is the only known moon of the scattered disc object Gonggong, discovered in 2016 by a team using the Hubble Space Telescope, and is named after the nine-headed snake monster from Chinese mythology that served the water god Gonggong. The moon has an estimated diameter of about 300 kilometers and orbits Gonggong at a distance of approximately 24,000 kilometers, taking about 25 days to complete one orbit in a nearly circular path. Observations of Xiangliu's orbit have been crucial in determining Gonggong's mass, and the moon's discovery has provided important insights into the formation and evolution of distant objects in the outer solar system.",
     "Salacia-Actaea": "Actaea is the only known moon of the trans-Neptunian object Salacia, discovered in 2006 by Keith Noll, Harold Levison, Denise Stephens, and Will Grundy using the Hubble Space Telescope, and is named after a Nereid (sea nymph) from Greek mythology. The moon has an estimated diameter of about 303 kilometers and orbits Salacia at a distance of approximately 5,619 kilometers, completing one orbit in about 5.5 days. Actaea's discovery and orbital observations have allowed scientists to determine Salacia's mass and density, revealing it to be a relatively low-density object composed primarily of water ice, typical of many large Kuiper Belt objects.",
@@ -408,7 +410,9 @@ const moonDescriptions = {
     "Salacia-Actaea": "Актея є єдиним відомим супутником транснептунового об'єкта Салація, відкритим у 2006 році Кітом Ноллом, Гарольдом Левісоном, Деніз Стівенс та Віллом Гранді, використовуючи космічний телескоп Габбл, і названа на честь Нереїди (морської німфи) з грецької міфології. Супутник має оцінений діаметр близько 303 кілометрів і обертається навколо Салації на відстані приблизно 5619 кілометрів, завершуючи один оберт приблизно за 5,5 днів. Відкриття та орбітальні спостереження Актеї дозволили вченим визначити масу та щільність Салації, виявивши, що вона є відносно низькощільною об'єктом, що складається переважно з водяного льоду, типовий для багатьох великих об'єктів поясу Койпера.",
     "2007 OR10-S/2016 (225088) 1": "S/2016 (225088) 1 є єдиним відомим супутником кандидата в карликові планети 2007 OR10, відкритим у 2016 році командою на чолі з Чабою Кіссом, використовуючи космічний телескоп Габбл, і є малим супутником з оціненим діаметром близько 237 кілометрів. Супутник обертається навколо 2007 OR10 на відстані принаймні 15 000 кілометрів, і його відкриття допомогло вченим визначити масу об'єкта, підтвердивши 2007 OR10 як один з найбільших об'єктів у регіоні розсіяного диска. Властивості та орбітальні характеристики супутника надають важливі підказки про формування та еволюцію цього віддаленого, червонуватого кандидата в карликові планети, який неофіційно був названий 'Білосніжкою' перед отриманням тимчасового позначення.",
     "Earth-OREST": "Орест, мандрівний супутник - рік відкриття 2019 - подорожуючий супутник у холодному космосі відомий своєю тягою до нового та незвіданого. Маленький супутник в величезному невідомому космосі у якого весь світ попереду. Такі маленькі супутники завжди нагадують, що попереду завжди є дорога, якою ще ніхто не ходив. Для нього космос — не тиша й пітьма, а нескінченний світ можливостей, які тільки чекають, щоб їх відкрили.",
-    "Earth-EMMA": "Емма, витончений супутник - рік відкриття 2020 - у час, коли світ зупинився, вона прийшла, щоб його оживити і дати кольори буденній сірості. Емма прокладає власну стежку у темряві - маленьку, але значущу дорогу, що нагадує: навіть у безмежному космосі є місце теплу й ніжності. Символом тихого відродження і що людство здатне на щире."
+    "Earth-EMMA": "Емма, витончений супутник - рік відкриття 2020 - у час, коли світ зупинився, вона прийшла, щоб його оживити і дати кольори буденній сірості. Емма прокладає власну стежку у темряві - маленьку, але значущу дорогу, що нагадує: навіть у безмежному космосі є місце теплу й ніжності. Символом тихого відродження і що людство здатне на щире.",
+    "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) — це космічний апарат NASA, який обертається навколо Марса з 2014 року, вивчаючи верхню атмосферу планети, іоносферу та взаємодії з Сонцем та сонячним вітром. Місія спрямована на розуміння того, як Марс втратив свою атмосферу та воду з часом, надаючи важливі дані про кліматичну історію планети та потенціал для минулої придатності до життя. Еліптична орбіта MAVEN дозволяє йому вибірково досліджувати різні висоти марсіанської атмосфери.",
+    "Jupiter-Juno": "Juno — це космічний апарат NASA, який прибув до Юпітера в 2016 році, вийшовши на високоеліптичну полярну орбіту для вивчення складу газового гіганта, гравітаційного поля, магнітного поля та полярної магнітосфери. Місія розкрила вражаючі деталі про атмосферу Юпітера, включаючи Велику червону пляму, та надала інформацію про формування та еволюцію планети. Унікальна орбіта Juno дозволяє йому уникати інтенсивних радіаційних поясів Юпітера, проводячи близькі спостереження."
   },
   cs: {
     "Earth-Moon": "Měsíc je jediný přirozený satelit Země a pátý největší měsíc ve sluneční soustavě, vytvořený přibližně před 4,5 miliardami let z trosek vytvořených, když objekt velikosti Marsu narazil do rané Země. Ovlivňuje příliv a odliv Země prostřednictvím gravitačních sil, vytváří denní vzestup a pokles oceánských vod, které formovaly pobřežní ekosystémy a navigaci v celé lidské historii. Povrch Měsíce je pokryt starověkými lávovými toky a impaktními krátery, bez atmosféry nebo tekuté vody, což z něj činí záznam rané historie sluneční soustavy zachovaný v nedotčeném stavu.",
@@ -452,7 +456,9 @@ const moonDescriptions = {
     "Salacia-Actaea": "Actaea je jediný známý měsíc transneptunického objektu Salacia, objevený v roce 2006 Keithem Nollem, Haroldem Levisonem, Denise Stephensovou a Wilem Grundym pomocí Hubbleova vesmírného dalekohledu, a je pojmenována po Nereidě (mořské nymfě) z řecké mytologie. Měsíc má odhadovaný průměr asi 303 kilometrů a obíhá Salacii ve vzdálenosti přibližně 5 619 kilometrů, dokončuje jeden oběh za asi 5,5 dne. Objev a orbitální pozorování Actaei umožnila vědcům určit hmotnost a hustotu Salacie, odhalila, že je relativně nízkohustotní objekt složený převážně z vodního ledu, typicky pro mnoho velkých objektů Kuiperova pásu.",
     "2007 OR10-S/2016 (225088) 1": "S/2016 (225088) 1 je jediný známý měsíc kandidáta na trpasličí planetu 2007 OR10, objevený v roce 2016 týmem vedeným Csabou Kissem pomocí Hubbleova vesmírného dalekohledu, a je malý měsíc s odhadovaným průměrem asi 237 kilometrů. Měsíc obíhá 2007 OR10 ve vzdálenosti nejméně 15 000 kilometrů, a jeho objev pomohl vědcům určit hmotnost objektu, potvrdil 2007 OR10 jako jeden z největších objektů v oblasti rozptýleného disku. Vlastnosti a orbitální charakteristiky měsíce poskytují důležité vodítka o formování a evoluci tohoto vzdáleného, načervenalého kandidáta na trpasličí planetu, který byl neoficiálně přezdíván 'Sněhurka' před získáním prozatímního označení.",
     "Earth-OREST": "OREST, toulavý satelit - rok objevu 2019 - putující satelit v chladném vesmíru, známý svou přitažlivostí k novému a neznámému. Malý satelit v obrovském neznámém vesmíru, který má celý svět před sebou. Takové malé satelity vždy připomínají, že před námi je vždy cesta, po které ještě nikdo nešel. Pro něj vesmír není ticho a temnota, ale nekonečný svět možností, které jen čekají, až budou objeveny.",
-    "Earth-EMMA": "EMMA, elegantní satelit - rok objevu 2020 - v době, kdy se svět zastavil, přišla, aby ho oživila a dala barvy všední šedi. EMMA si proklestila vlastní stezku v temnotě - malou, ale významnou cestu, která připomíná: i v bezhraničném vesmíru je místo pro teplo a něhu. Symbol tichého znovuzrození a toho, že lidstvo je schopno upřímnosti."
+    "Earth-EMMA": "EMMA, elegantní satelit - rok objevu 2020 - v době, kdy se svět zastavil, přišla, aby ho oživila a dala barvy všední šedi. EMMA si proklestila vlastní stezku v temnotě - malou, ale významnou cestu, která připomíná: i v bezhraničném vesmíru je místo pro teplo a něhu. Symbol tichého znovuzrození a toho, že lidstvo je schopno upřímnosti.",
+    "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) je kosmická sonda NASA obíhající kolem Marsu od roku 2014, která studuje horní atmosféru planety, ionosféru a interakce se Sluncem a slunečním větrem. Mise si klade za cíl pochopit, jak Mars ztratil svou atmosféru a vodu v průběhu času, což poskytuje klíčové poznatky o klimatické historii planety a potenciálu pro minulou obyvatelnost. Elipsovitá orbita MAVEN umožňuje sondě vzorkovat různé výšky marsovské atmosféry.",
+    "Jupiter-Juno": "Juno je kosmická sonda NASA, která dorazila k Jupiteru v roce 2016, vstoupila na vysoce eliptickou polární orbitu, aby studovala složení plynného obra, gravitační pole, magnetické pole a polární magnetosféru. Mise odhalila úžasné detaily o Jupiterově atmosféře, včetně Velké rudé skvrny, a poskytla poznatky o formování a vývoji planety. Unikátní orbita Juno umožňuje sondě vyhnout se intenzivním radiačním pásům Jupiteru při provádění blízkých pozorování."
   }
 };
 function getBodyInfo(bodyName) {
@@ -710,6 +716,37 @@ function keplerToCartesian(orb, epochJD = 2460000) {
   const x = x_orb * (Math.cos(w) * Math.cos(om) - Math.sin(w) * Math.sin(om) * Math.cos(i)) - y_orb * (Math.sin(w) * Math.cos(om) + Math.cos(w) * Math.sin(om) * Math.cos(i));
   const y = x_orb * (Math.cos(w) * Math.sin(om) + Math.sin(w) * Math.cos(om) * Math.cos(i)) + y_orb * (Math.cos(w) * Math.cos(om) * Math.cos(i) - Math.sin(w) * Math.sin(om));
   const z = x_orb * Math.sin(w) * Math.sin(i) + y_orb * Math.cos(w) * Math.sin(i);
+  return { x, y, z };
+}
+
+// Calculate position on elliptical orbit (simplified 2D elliptical orbit)
+function calculateEllipticalOrbit(orbit, meanAnomaly) {
+  const a = orbit.semiMajorAxis;
+  const e = orbit.eccentricity;
+  const w = orbit.argumentOfPeriapsis || 0;
+  const i = orbit.inclination || 0;
+  
+  // Solve Kepler's equation for eccentric anomaly
+  let E = meanAnomaly;
+  for (let j = 0; j < 10; j++) {
+    E = meanAnomaly + e * Math.sin(E);
+  }
+  
+  // Calculate true anomaly
+  const nu = 2 * Math.atan2(Math.sqrt(1 + e) * Math.sin(E / 2), Math.sqrt(1 - e) * Math.cos(E / 2));
+  
+  // Calculate distance from center
+  const r = a * (1 - e * e) / (1 + e * Math.cos(nu));
+  
+  // Calculate position in orbital plane
+  const x_orb = r * Math.cos(nu + w);
+  const y_orb = r * Math.sin(nu + w);
+  
+  // Apply inclination (rotate around x-axis)
+  const x = x_orb;
+  const y = y_orb * Math.cos(i);
+  const z = y_orb * Math.sin(i);
+  
   return { x, y, z };
 }
 async function fetchNEOs() {
@@ -1382,6 +1419,24 @@ const celestialBodies = [
     moons: [
       { name: "Phobos", size: 0.05, dist: 1.5, speed: 0.32, color: new THREE.Color(0.4, 0.26, 0.13), info: "Largest moon of Mars. Orbits Mars 3 times per day.", initialAngle: 0.5 },
       { name: "Deimos", size: 0.03, dist: 2.2, speed: 0.08, color: new THREE.Color(0.4, 0.26, 0.13), info: "Smaller, outer moon of Mars. Takes 30 hours to orbit Mars.", initialAngle: 2.1 }
+    ],
+    spaceProbes: [
+      {
+        name: "MAVEN",
+        modelPath: "Mars Atmosphere and Volatile EvolutioN (MAVEN) (A).glb",
+        size: 0.02,
+        // Elliptical orbit parameters (semi-major axis in planet radii, eccentricity, inclination, etc.)
+        orbit: {
+          semiMajorAxis: 1.5, // Average distance in planet radii
+          eccentricity: 0.3, // Elliptical orbit
+          inclination: 0.1, // Slight inclination in radians
+          argumentOfPeriapsis: 0, // Argument of periapsis
+          meanAnomaly: 0, // Starting position
+          orbitalPeriod: 4.5 // Hours (MAVEN's orbital period)
+        },
+        color: new THREE.Color(0.8, 0.8, 0.9),
+        info: "Mars Atmosphere and Volatile EvolutioN mission studying Mars' upper atmosphere."
+      }
     ]
   },
   {
@@ -1430,6 +1485,24 @@ const celestialBodies = [
     discoveryYear: "Ancient",
     realAU: 5.2,
     orbitalPeriodDays: 4332.59,
+    spaceProbes: [
+      {
+        name: "Juno",
+        modelPath: "Juno.glb",
+        size: 0.03,
+        // Elliptical orbit parameters
+        orbit: {
+          semiMajorAxis: 2.5, // Average distance in planet radii
+          eccentricity: 0.4, // Highly elliptical orbit
+          inclination: 0.05, // Slight inclination
+          argumentOfPeriapsis: 0,
+          meanAnomaly: 0,
+          orbitalPeriod: 14 // Days (Juno's orbital period)
+        },
+        color: new THREE.Color(0.9, 0.9, 0.95),
+        info: "Juno mission studying Jupiter's composition, gravity field, magnetic field, and polar magnetosphere."
+      }
+    ],
     moons: [
       { name: "Io", size: 0.15, dist: 3.5, speed: 0.56, color: new THREE.Color(1.0, 1.0, 0.6), info: "Most volcanically active body in the solar system.", initialAngle: 0.8 },
       { name: "Europa", size: 0.13, dist: 4.2, speed: 0.28, color: new THREE.Color(0.53, 0.81, 0.92), info: "Ice-covered moon with subsurface ocean. Potential for life.", initialAngle: 1.5 },
@@ -1775,12 +1848,14 @@ stlLoader.load(
   }
 );
 
-// Load GLB model for EMU spacesuits
+// Load GLB models for space probes
 const dracoLoader = new DRACOLoader(loadingManager);
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
 const gltfLoader = new GLTFLoader(loadingManager);
 gltfLoader.setDRACOLoader(dracoLoader);
 let emuGLTFModel = null;
+let mavenGLTFModel = null;
+let junoGLTFModel = null;
 let spaceObjectMeshesRefs = []; // References to space object meshes for model update
 
 gltfLoader.load(
@@ -1926,6 +2001,40 @@ gltfLoader.load(
   }
 );
 
+// Load MAVEN GLB model
+gltfLoader.load(
+  `${BASE_URL}Models/Space probe/Mars/Mars Atmosphere and Volatile EvolutioN (MAVEN) (A).glb`,
+  (gltf) => {
+    mavenGLTFModel = gltf;
+    console.log('MAVEN GLB model loaded successfully');
+  },
+  (progress) => {
+    if (progress.lengthComputable) {
+      console.log('Loading MAVEN GLB:', (progress.loaded / progress.total * 100) + '%');
+    }
+  },
+  (error) => {
+    console.error('Error loading MAVEN GLB:', error);
+  }
+);
+
+// Load Juno GLB model
+gltfLoader.load(
+  `${BASE_URL}Models/Space probe/Jupiter/Juno.glb`,
+  (gltf) => {
+    junoGLTFModel = gltf;
+    console.log('Juno GLB model loaded successfully');
+  },
+  (progress) => {
+    if (progress.lengthComputable) {
+      console.log('Loading Juno GLB:', (progress.loaded / progress.total * 100) + '%');
+    }
+  },
+  (error) => {
+    console.error('Error loading Juno GLB:', error);
+  }
+);
+
 const planetMeshes = [];
 celestialBodies.forEach((body) => {
   // Skip Sun as it's already created separately
@@ -2068,6 +2177,108 @@ celestialBodies.forEach((body) => {
     };
   }
   scene.add(orbit);
+  
+  // Create space probes with elliptical orbits
+  const spaceProbes = [];
+  if (body.spaceProbes && body.spaceProbes.length > 0) {
+    body.spaceProbes.forEach((probeData) => {
+      let probeMesh;
+      let gltfModel = null;
+      
+      // Determine which GLB model to use
+      if (probeData.name === "MAVEN" && mavenGLTFModel) {
+        gltfModel = mavenGLTFModel;
+      } else if (probeData.name === "Juno" && junoGLTFModel) {
+        gltfModel = junoGLTFModel;
+      }
+      
+      // Use GLB model if available, otherwise use sphere
+      if (gltfModel && gltfModel.scene) {
+        console.log('Using GLB model for', probeData.name);
+        const clonedScene = gltfModel.scene.clone();
+        
+        // Fix materials
+        clonedScene.traverse((child) => {
+          if (child.isMesh) {
+            if (child.material) {
+              const materials = Array.isArray(child.material) ? child.material : [child.material];
+              const newMaterials = materials.map((material) => {
+                if (material) {
+                  return new THREE.MeshStandardMaterial({
+                    map: material.map || null,
+                    normalMap: material.normalMap || null,
+                    roughnessMap: material.roughnessMap || null,
+                    metalnessMap: material.metalnessMap || null,
+                    emissiveMap: material.emissiveMap || null,
+                    color: material.color ? material.color.clone() : new THREE.Color(0.9, 0.9, 0.9),
+                    roughness: material.roughness !== undefined ? material.roughness : 0.7,
+                    metalness: material.metalness !== undefined ? material.metalness : 0.3,
+                    emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
+                    transparent: false,
+                    opacity: 1.0,
+                    depthWrite: true,
+                    blending: THREE.NormalBlending
+                  });
+                }
+                return new THREE.MeshStandardMaterial({ color: 0xffffff });
+              });
+              if (Array.isArray(child.material)) {
+                child.material = newMaterials;
+              } else {
+                child.material = newMaterials[0];
+              }
+            } else {
+              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            }
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        // Calculate bounding box to scale model
+        const box = new THREE.Box3().setFromObject(clonedScene);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = probeData.size / maxDim;
+        clonedScene.scale.set(scale, scale, scale);
+        probeMesh = clonedScene;
+      } else {
+        // Fallback to sphere
+        const probeGeo = new THREE.SphereGeometry(probeData.size, 16, 16);
+        const probeMat = new THREE.MeshStandardMaterial({
+          color: probeData.color,
+          roughness: 0.3,
+          metalness: 0.8,
+          emissive: probeData.color.clone().multiplyScalar(0.1)
+        });
+        probeMesh = new THREE.Mesh(probeGeo, probeMat);
+      }
+      
+      const probePivot = new THREE.Object3D();
+      probePivot.add(probeMesh);
+      mesh.add(probePivot);
+      
+      // Initialize elliptical orbit position
+      const orbit = probeData.orbit;
+      const meanAnomaly = orbit.meanAnomaly || 0;
+      const pos = calculateEllipticalOrbit(orbit, meanAnomaly);
+      probeMesh.position.set(pos.x, pos.y, pos.z);
+      
+      // Create space probe reference for animation
+      const probeRef = {
+        mesh: probeMesh,
+        pivot: probePivot,
+        orbit: orbit,
+        meanAnomaly: meanAnomaly,
+        name: probeData.name,
+        info: probeData.info
+      };
+      
+      spaceProbes.push(probeRef);
+    });
+  }
+  
   if (body.hasRings) {
     const ringTex = loader.load(`${BASE_URL}textures/saturn_ring.png`);
     // Increase ring size by 25%
@@ -2245,8 +2456,10 @@ celestialBodies.forEach((body) => {
     pivot,
     speed: body.speed,
     moons: moons,
+    spaceProbes: spaceProbes,
     type: body.type,
-    orbit: orbit
+    orbit: orbit,
+    body: body
   });
 });
 const composer = new EffectComposer(renderer);
@@ -2487,6 +2700,32 @@ function animate() {
               }
             });
           }
+        });
+      }
+      
+      // Update space probes with elliptical orbits
+      if (p.spaceProbes && p.spaceProbes.length > 0) {
+        p.spaceProbes.forEach((probe) => {
+          // Update mean anomaly based on orbital period
+          // orbitalPeriod is in hours or days
+          const orbitalPeriod = probe.orbit.orbitalPeriod;
+          // Convert to seconds
+          const periodInSeconds = orbitalPeriod < 1 ? orbitalPeriod * 3600 : orbitalPeriod * 24 * 3600;
+          // Calculate angular speed in radians per second
+          const angularSpeedRadPerSec = (2 * Math.PI) / periodInSeconds;
+          // Convert to radians per frame (assuming 60 FPS)
+          const frameTime = timePerFrame / 1000; // Convert to seconds
+          const angularSpeed = angularSpeedRadPerSec * frameTime;
+          
+          // Update mean anomaly
+          probe.meanAnomaly += angularSpeed * realTimeMultiplier;
+          if (probe.meanAnomaly > 2 * Math.PI) {
+            probe.meanAnomaly -= 2 * Math.PI;
+          }
+          
+          // Calculate new position on elliptical orbit
+          const pos = calculateEllipticalOrbit(probe.orbit, probe.meanAnomaly);
+          probe.mesh.position.set(pos.x, pos.y, pos.z);
         });
       }
     });
