@@ -377,7 +377,7 @@ const moonDescriptions = {
     "Earth-OREST": "OREST, the wandering satellite - discovery year 2019 - a traveling satellite in the cold cosmos, known for its attraction to the new and unknown. A small satellite in the vast unknown cosmos with the whole world ahead. Such small satellites always remind us that there is always a path ahead that no one has walked before. For it, space is not silence and darkness, but an infinite world of possibilities that are just waiting to be discovered.",
     "Earth-EMMA": "EMMA, the elegant satellite - discovery year 2020 - at a time when the world stopped, she came to revive it and give colors to everyday grayness. EMMA carves her own path in the darkness - a small but significant road that reminds us: even in the boundless cosmos there is a place for warmth and tenderness. A symbol of quiet rebirth and that humanity is capable of sincerity.",
     "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) is a NASA spacecraft orbiting Mars since 2014, studying the planet's upper atmosphere, ionosphere, and interactions with the Sun and solar wind. The mission aims to understand how Mars lost its atmosphere and water over time, providing crucial insights into the planet's climate history and potential for past habitability. MAVEN's elliptical orbit allows it to sample different altitudes of the Martian atmosphere.",
-    "Jupiter-Juno": "Juno is a NASA spacecraft that arrived at Jupiter in 2016, entering a highly elliptical polar orbit to study the gas giant's composition, gravity field, magnetic field, and polar magnetosphere. The mission has revealed stunning details about Jupiter's atmosphere, including its Great Red Spot, and has provided insights into the planet's formation and evolution. Juno's unique orbit allows it to avoid Jupiter's intense radiation belts while conducting close-up observations.",
+    "Jupiter-JUNO": "JUNO is a NASA spacecraft that arrived at Jupiter in 2016, entering a highly elliptical polar orbit to study the gas giant's composition, gravity field, magnetic field, and polar magnetosphere. The mission has revealed stunning details about Jupiter's atmosphere, including its Great Red Spot, and has provided insights into the planet's formation and evolution. JUNO's unique orbit allows it to avoid Jupiter's intense radiation belts while conducting close-up observations.",
     "Orcus-Vanth": "Vanth is the only known moon of the dwarf planet candidate Orcus, discovered in 2005 by Mike Brown and his team using the Hubble Space Telescope, and is unusually large relative to Orcus, comprising about 3% of the system's total mass. The moon has an estimated diameter of about 443 kilometers, making it one of the largest known trans-Neptunian object satellites, and orbits Orcus at a distance of approximately 9,000 kilometers, taking about 9.5 days to complete one orbit. Vanth's large size relative to Orcus suggests it may have formed from a major collision, similar to how Earth's Moon formed, and its orbit is nearly circular and aligned with Orcus's equator.",
     "Gonggong-Xiangliu": "Xiangliu is the only known moon of the scattered disc object Gonggong, discovered in 2016 by a team using the Hubble Space Telescope, and is named after the nine-headed snake monster from Chinese mythology that served the water god Gonggong. The moon has an estimated diameter of about 300 kilometers and orbits Gonggong at a distance of approximately 24,000 kilometers, taking about 25 days to complete one orbit in a nearly circular path. Observations of Xiangliu's orbit have been crucial in determining Gonggong's mass, and the moon's discovery has provided important insights into the formation and evolution of distant objects in the outer solar system.",
     "Salacia-Actaea": "Actaea is the only known moon of the trans-Neptunian object Salacia, discovered in 2006 by Keith Noll, Harold Levison, Denise Stephens, and Will Grundy using the Hubble Space Telescope, and is named after a Nereid (sea nymph) from Greek mythology. The moon has an estimated diameter of about 303 kilometers and orbits Salacia at a distance of approximately 5,619 kilometers, completing one orbit in about 5.5 days. Actaea's discovery and orbital observations have allowed scientists to determine Salacia's mass and density, revealing it to be a relatively low-density object composed primarily of water ice, typical of many large Kuiper Belt objects.",
@@ -427,7 +427,7 @@ const moonDescriptions = {
     "Earth-OREST": "Орест, мандрівний супутник - рік відкриття 2019 - подорожуючий супутник у холодному космосі відомий своєю тягою до нового та незвіданого. Маленький супутник в величезному невідомому космосі у якого весь світ попереду. Такі маленькі супутники завжди нагадують, що попереду завжди є дорога, якою ще ніхто не ходив. Для нього космос — не тиша й пітьма, а нескінченний світ можливостей, які тільки чекають, щоб їх відкрили.",
     "Earth-EMMA": "Емма, витончений супутник - рік відкриття 2020 - у час, коли світ зупинився, вона прийшла, щоб його оживити і дати кольори буденній сірості. Емма прокладає власну стежку у темряві - маленьку, але значущу дорогу, що нагадує: навіть у безмежному космосі є місце теплу й ніжності. Символом тихого відродження і що людство здатне на щире.",
     "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) — це космічний апарат NASA, який обертається навколо Марса з 2014 року, вивчаючи верхню атмосферу планети, іоносферу та взаємодії з Сонцем та сонячним вітром. Місія спрямована на розуміння того, як Марс втратив свою атмосферу та воду з часом, надаючи важливі дані про кліматичну історію планети та потенціал для минулої придатності до життя. Еліптична орбіта MAVEN дозволяє йому вибірково досліджувати різні висоти марсіанської атмосфери.",
-    "Jupiter-Juno": "Juno — це космічний апарат NASA, який прибув до Юпітера в 2016 році, вийшовши на високоеліптичну полярну орбіту для вивчення складу газового гіганта, гравітаційного поля, магнітного поля та полярної магнітосфери. Місія розкрила вражаючі деталі про атмосферу Юпітера, включаючи Велику червону пляму, та надала інформацію про формування та еволюцію планети. Унікальна орбіта Juno дозволяє йому уникати інтенсивних радіаційних поясів Юпітера, проводячи близькі спостереження."
+    "Jupiter-JUNO": "JUNO — це космічний апарат NASA, який прибув до Юпітера в 2016 році, вийшовши на високоеліптичну полярну орбіту для вивчення складу газового гіганта, гравітаційного поля, магнітного поля та полярної магнітосфери. Місія розкрила вражаючі деталі про атмосферу Юпітера, включаючи Велику червону пляму, та надала інформацію про формування та еволюцію планети. Унікальна орбіта JUNO дозволяє йому уникати інтенсивних радіаційних поясів Юпітера, проводячи близькі спостереження."
   },
   cs: {
     "Earth-Moon": "Měsíc je jediný přirozený satelit Země a pátý největší měsíc ve sluneční soustavě, vytvořený přibližně před 4,5 miliardami let z trosek vytvořených, když objekt velikosti Marsu narazil do rané Země. Ovlivňuje příliv a odliv Země prostřednictvím gravitačních sil, vytváří denní vzestup a pokles oceánských vod, které formovaly pobřežní ekosystémy a navigaci v celé lidské historii. Povrch Měsíce je pokryt starověkými lávovými toky a impaktními krátery, bez atmosféry nebo tekuté vody, což z něj činí záznam rané historie sluneční soustavy zachovaný v nedotčeném stavu.",
@@ -473,7 +473,7 @@ const moonDescriptions = {
     "Earth-OREST": "OREST, toulavý satelit - rok objevu 2019 - putující satelit v chladném vesmíru, známý svou přitažlivostí k novému a neznámému. Malý satelit v obrovském neznámém vesmíru, který má celý svět před sebou. Takové malé satelity vždy připomínají, že před námi je vždy cesta, po které ještě nikdo nešel. Pro něj vesmír není ticho a temnota, ale nekonečný svět možností, které jen čekají, až budou objeveny.",
     "Earth-EMMA": "EMMA, elegantní satelit - rok objevu 2020 - v době, kdy se svět zastavil, přišla, aby ho oživila a dala barvy všední šedi. EMMA si proklestila vlastní stezku v temnotě - malou, ale významnou cestu, která připomíná: i v bezhraničném vesmíru je místo pro teplo a něhu. Symbol tichého znovuzrození a toho, že lidstvo je schopno upřímnosti.",
     "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) je kosmická sonda NASA obíhající kolem Marsu od roku 2014, která studuje horní atmosféru planety, ionosféru a interakce se Sluncem a slunečním větrem. Mise si klade za cíl pochopit, jak Mars ztratil svou atmosféru a vodu v průběhu času, což poskytuje klíčové poznatky o klimatické historii planety a potenciálu pro minulou obyvatelnost. Elipsovitá orbita MAVEN umožňuje sondě vzorkovat různé výšky marsovské atmosféry.",
-    "Jupiter-Juno": "Juno je kosmická sonda NASA, která dorazila k Jupiteru v roce 2016, vstoupila na vysoce eliptickou polární orbitu, aby studovala složení plynného obra, gravitační pole, magnetické pole a polární magnetosféru. Mise odhalila úžasné detaily o Jupiterově atmosféře, včetně Velké rudé skvrny, a poskytla poznatky o formování a vývoji planety. Unikátní orbita Juno umožňuje sondě vyhnout se intenzivním radiačním pásům Jupiteru při provádění blízkých pozorování."
+    "Jupiter-JUNO": "JUNO je kosmická sonda NASA, která dorazila k Jupiteru v roce 2016, vstoupila na vysoce eliptickou polární orbitu, aby studovala složení plynného obra, gravitační pole, magnetické pole a polární magnetosféru. Mise odhalila úžasné detaily o Jupiterově atmosféře, včetně Velké rudé skvrny, a poskytla poznatky o formování a vývoji planety. Unikátní orbita JUNO umožňuje sondě vyhnout se intenzivním radiačním pásům Jupiteru při provádění blízkých pozorování."
   }
 };
 function getBodyInfo(bodyName) {
@@ -590,6 +590,13 @@ function updateUITexts() {
       const count = document.getElementById('moonCount');
       const countText = count ? count.textContent : '0';
       moonsTitle.innerHTML = `${t('moons')} (<span id="moonCount">${countText}</span>)`;
+    }
+    // Update space probes section title
+    const spaceProbesTitle = document.getElementById('spaceProbesTitle');
+    if (spaceProbesTitle) {
+      const probeCount = document.getElementById('spaceProbeCount');
+      const probeCountText = probeCount ? probeCount.textContent : '0';
+      spaceProbesTitle.innerHTML = `${t('spaceProbes')} (<span id="spaceProbeCount">${probeCountText}</span>)`;
     }
   }
 }
@@ -1469,7 +1476,7 @@ const celestialBodies = [
       {
         name: "MAVEN",
         modelPath: "Mars Atmosphere and Volatile EvolutioN (MAVEN) (A).glb",
-        size: 0.05775,
+        size: 0.0693, // Increased by 20% (0.05775 * 1.2)
         // Elliptical orbit parameters (semi-major axis in planet radii, eccentricity, inclination, etc.)
         orbit: {
           semiMajorAxis: 1.5, // Average distance in planet radii
@@ -1532,9 +1539,9 @@ const celestialBodies = [
     orbitalPeriodDays: 4332.59,
     spaceProbes: [
       {
-        name: "Juno",
+        name: "JUNO",
         modelPath: "Juno.glb",
-        size: 0.05775,
+        size: 0.0693, // Increased by 20% (0.05775 * 1.2)
         // Elliptical orbit parameters
         orbit: {
           semiMajorAxis: 3.5, // Average distance in planet radii (increased to avoid collision with planet)
@@ -1542,10 +1549,10 @@ const celestialBodies = [
           inclination: 0.05, // Slight inclination
           argumentOfPeriapsis: 0,
           meanAnomaly: 0,
-          orbitalPeriod: 14 // Days (Juno's orbital period)
+          orbitalPeriod: 14 // Days (JUNO's orbital period)
         },
         color: new THREE.Color(0.9, 0.9, 0.95),
-        info: "Juno mission studying Jupiter's composition, gravity field, magnetic field, and polar magnetosphere."
+        info: "JUNO mission studying Jupiter's composition, gravity field, magnetic field, and polar magnetosphere."
       }
     ],
     moons: [
@@ -2227,11 +2234,11 @@ gltfLoader.load(
   `${BASE_URL}Models/Space probe/Jupiter/Juno.glb`,
   (gltf) => {
     junoGLTFModel = gltf;
-    console.log('Juno GLB model loaded successfully');
-    // Update Juno meshes if they already exist
+    console.log('JUNO GLB model loaded successfully');
+    // Update JUNO meshes if they already exist
     spaceProbeMeshesRefs.forEach((ref) => {
-      if (ref.name === "Juno" && ref.pivot && ref.probeRef && junoGLTFModel && junoGLTFModel.scene) {
-        console.log('Updating Juno geometry with GLB model');
+      if (ref.name === "JUNO" && ref.pivot && ref.probeRef && junoGLTFModel && junoGLTFModel.scene) {
+        console.log('Updating JUNO geometry with GLB model');
         const clonedScene = junoGLTFModel.scene.clone();
         
         // Fix materials
@@ -2309,11 +2316,11 @@ gltfLoader.load(
   },
   (progress) => {
     if (progress.lengthComputable) {
-      console.log('Loading Juno GLB:', (progress.loaded / progress.total * 100) + '%');
+      console.log('Loading JUNO GLB:', (progress.loaded / progress.total * 100) + '%');
     }
   },
   (error) => {
-    console.error('Error loading Juno GLB:', error);
+    console.error('Error loading JUNO GLB:', error);
   }
 );
 
@@ -2470,7 +2477,7 @@ celestialBodies.forEach((body) => {
       // Determine which GLB model to use
       if (probeData.name === "MAVEN" && mavenGLTFModel) {
         gltfModel = mavenGLTFModel;
-      } else if (probeData.name === "Juno" && junoGLTFModel) {
+      } else if (probeData.name === "JUNO" && junoGLTFModel) {
         gltfModel = junoGLTFModel;
       } else if ((probeData.name === "OREST" || probeData.name === "EMMA") && emuGLTFModel) {
         gltfModel = emuGLTFModel;
@@ -3071,6 +3078,36 @@ function animate() {
             // Calculate new position on elliptical orbit
             const pos = calculateEllipticalOrbit(probe.orbit, probe.meanAnomaly);
             probe.mesh.position.set(pos.x, pos.y, pos.z);
+            
+            // Make MAVEN and JUNO face their planets
+            if (probe.name === "MAVEN" || probe.name === "JUNO") {
+              // Get planet's world position
+              const planetWorldPos = new THREE.Vector3();
+              p.mesh.getWorldPosition(planetWorldPos);
+              
+              // Get probe's world position
+              const probeWorldPos = new THREE.Vector3();
+              probe.pivot.getWorldPosition(probeWorldPos);
+              
+              // Calculate direction from probe to planet
+              const directionToPlanet = new THREE.Vector3().subVectors(planetWorldPos, probeWorldPos).normalize();
+              
+              // Calculate rotation to face the planet
+              const forward = new THREE.Vector3(1, 0, 0);
+              const quaternion = new THREE.Quaternion().setFromUnitVectors(forward, directionToPlanet);
+              
+              // Apply rotation to the mesh
+              if (probe.mesh && probe.mesh.quaternion) {
+                probe.mesh.quaternion.copy(quaternion);
+              } else if (probe.mesh && probe.mesh.children && probe.mesh.children.length > 0) {
+                // If it's a Group, apply to all children
+                probe.mesh.children.forEach(child => {
+                  if (child.quaternion !== undefined) {
+                    child.quaternion.copy(quaternion);
+                  }
+                });
+              }
+            }
           }
         });
       }
@@ -3905,6 +3942,7 @@ function showPlanetInfoCard(body, planetIndex) {
     spaceProbesSection.className = 'info-section';
     spaceProbesSection.id = 'spaceProbesSection';
     const spaceProbesTitle = document.createElement('h4');
+    spaceProbesTitle.id = 'spaceProbesTitle';
     spaceProbesTitle.innerHTML = `${t('spaceProbes')} (<span id="spaceProbeCount">0</span>)`;
     spaceProbesSection.appendChild(spaceProbesTitle);
     const spaceProbesContainer = document.createElement('div');
@@ -3915,6 +3953,13 @@ function showPlanetInfoCard(body, planetIndex) {
     if (moonsSection && moonsSection.parentNode) {
       moonsSection.parentNode.insertBefore(spaceProbesSection, moonsSection.nextSibling);
     }
+  }
+  
+  // Update space probes section title with current language
+  const spaceProbesTitle = document.getElementById('spaceProbesTitle');
+  if (spaceProbesTitle) {
+    const probeCount = planetObj && planetObj.spaceProbes ? planetObj.spaceProbes.length : 0;
+    spaceProbesTitle.innerHTML = `${t('spaceProbes')} (<span id="spaceProbeCount">${probeCount}</span>)`;
   }
   
   const spaceProbesContainer = document.getElementById('spaceProbesContainer');
