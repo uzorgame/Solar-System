@@ -3005,6 +3005,33 @@ celestialBodies.forEach((body) => {
           roughness: 0.9,
           metalness: 0.1
         });
+      } else if (body.name === "Jupiter") {
+        // Load textures for Jupiter's moons: Europa, Ganymede, Callisto
+        let moonTexturePath = null;
+        if (moonData.name === "Europa") {
+          moonTexturePath = `${BASE_URL}textures/Jupiter – Europa.png`;
+        } else if (moonData.name === "Ganymede") {
+          moonTexturePath = `${BASE_URL}textures/Jupiter – Ganymede.png`;
+        } else if (moonData.name === "Callisto") {
+          moonTexturePath = `${BASE_URL}textures/Jupiter – Callisto.png`;
+        }
+        
+        if (moonTexturePath) {
+          const moonTexture = loader.load(moonTexturePath);
+          moonMat = new THREE.MeshStandardMaterial({
+            map: moonTexture,
+            color: moonData.color, // Keep color as fallback/overlay
+            roughness: 0.9,
+            metalness: 0.1
+          });
+        } else {
+          // For other Jupiter moons (like Io), use color
+          moonMat = new THREE.MeshStandardMaterial({
+            color: moonData.color,
+            roughness: 0.9,
+            metalness: 0.1
+          });
+        }
       } else {
         moonMat = new THREE.MeshStandardMaterial({
           color: moonData.color,
