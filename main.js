@@ -2070,9 +2070,12 @@ celestialBodies.forEach((body) => {
   scene.add(orbit);
   if (body.hasRings) {
     const ringTex = loader.load(`${BASE_URL}textures/saturn_ring.png`);
+    // Increase ring size by 25%
+    const innerRadius = (body.size + 0.5) * 1.25;
+    const outerRadius = (body.size + 1.2) * 1.25;
     const ringGeo = new THREE.RingGeometry(
-      body.size + 0.5,
-      body.size + 1.2,
+      innerRadius,
+      outerRadius,
       64
     );
     const ringMat = new THREE.MeshBasicMaterial({
@@ -2084,6 +2087,8 @@ celestialBodies.forEach((body) => {
     });
     const ring = new THREE.Mesh(ringGeo, ringMat);
     ring.rotation.x = Math.PI / 2;
+    // Tilt rings by 15 degrees (15 * Math.PI / 180 = Math.PI / 12)
+    ring.rotation.z = Math.PI / 12;
     ring.castShadow = true;
     ring.receiveShadow = true;
     mesh.add(ring);
