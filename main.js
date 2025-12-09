@@ -1554,7 +1554,7 @@ const celestialBodies = [
         size: 0.07623, // Increased by 20% + 10% (0.05775 * 1.2 * 1.1)
         // Highly elliptical polar orbit parameters
         orbit: {
-          semiMajorAxis: 3.5, // Average distance in planet radii (increased to avoid collision with planet)
+          semiMajorAxis: 8, // Increased to prevent passing through planet (with eccentricity 0.75, periapsis is at 2 planet radii)
           eccentricity: 0.75, // Highly elliptical orbit - spends most time far from planet, then quickly passes over poles
           inclination: 1.4, // Polar orbit (approximately 90 degrees = ~1.57 radians, but 1.4 gives good polar view)
           argumentOfPeriapsis: 0,
