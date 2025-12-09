@@ -1507,7 +1507,7 @@ const celestialBodies = [
         size: 0.03,
         // Elliptical orbit parameters
         orbit: {
-          semiMajorAxis: 2.5, // Average distance in planet radii
+          semiMajorAxis: 3.5, // Average distance in planet radii (increased to avoid collision with planet)
           eccentricity: 0.4, // Highly elliptical orbit
           inclination: 0.05, // Slight inclination
           argumentOfPeriapsis: 0,
