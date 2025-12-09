@@ -1739,39 +1739,39 @@ const celestialBodies = [
     ]
   }
 ];
-// Load STL model for Moon
+// Load STL model for Vesta
 const stlLoader = new STLLoader(loadingManager);
-let moonSTLGeometry = null;
-let moonMeshRef = null; // Reference to moon mesh for geometry update
+let vestaSTLGeometry = null;
+let vestaMeshRef = null; // Reference to vesta mesh for geometry update
 
 stlLoader.load(
-  `${BASE_URL}textures/vesta_moon.stl`,
+  `${BASE_URL}Models/Asteroid/Vesta/vesta_moon.stl`,
   (geometry) => {
-    moonSTLGeometry = geometry;
-    console.log('Moon STL model loaded successfully');
-    // Update moon geometry if mesh already exists
-    if (moonMeshRef) {
-      // Calculate bounding box to scale model to moon size
+    vestaSTLGeometry = geometry;
+    console.log('Vesta STL model loaded successfully');
+    // Update vesta geometry if mesh already exists
+    if (vestaMeshRef) {
+      // Calculate bounding box to scale model to vesta size
       geometry.computeBoundingBox();
       const box = geometry.boundingBox;
       const size = new THREE.Vector3();
       box.getSize(size);
       const maxDim = Math.max(size.x, size.y, size.z);
-      const moonSize = 0.2835; // Moon size from data (increased by 5%)
-      const scale = moonSize / maxDim;
+      const vestaSize = 0.15; // Vesta size from data
+      const scale = vestaSize / maxDim;
       geometry.scale(scale, scale, scale);
-      moonMeshRef.geometry.dispose();
-      moonMeshRef.geometry = geometry;
-      console.log('Moon geometry updated with STL model');
+      vestaMeshRef.geometry.dispose();
+      vestaMeshRef.geometry = geometry;
+      console.log('Vesta geometry updated with STL model');
     }
   },
   (progress) => {
     if (progress.lengthComputable) {
-      console.log('Loading moon STL:', (progress.loaded / progress.total * 100) + '%');
+      console.log('Loading vesta STL:', (progress.loaded / progress.total * 100) + '%');
     }
   },
   (error) => {
-    console.error('Error loading moon STL:', error);
+    console.error('Error loading vesta STL:', error);
   }
 );
 
@@ -1964,8 +1964,26 @@ celestialBodies.forEach((body) => {
       emissive: new THREE.Color(0.0, 0.0, 0.0),
     });
   }
-  const geo = new THREE.SphereGeometry(body.size, 64, 64);
+  // Use STL geometry for Vesta if available, otherwise use sphere
+  let geo;
+  if (body.name === "Vesta" && vestaSTLGeometry) {
+    geo = vestaSTLGeometry.clone();
+    // Calculate bounding box to scale model to vesta size
+    geo.computeBoundingBox();
+    const box = geo.boundingBox;
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = body.size / maxDim;
+    geo.scale(scale, scale, scale);
+  } else {
+    geo = new THREE.SphereGeometry(body.size, 64, 64);
+  }
   const mesh = new THREE.Mesh(geo, material);
+  // Store reference to vesta mesh for STL geometry update
+  if (body.name === "Vesta") {
+    vestaMeshRef = mesh;
+  }
   mesh.castShadow = true;
   mesh.receiveShadow = true;
   const pivot = new THREE.Object3D();
@@ -2073,31 +2091,14 @@ celestialBodies.forEach((body) => {
   const moons = [];
   if (body.moons && body.moons.length > 0) {
     body.moons.forEach((moonData) => {
-      // Use STL geometry for Moon if available, otherwise use sphere
-      let moonGeo;
-      if (moonData.name === "Moon" && moonSTLGeometry) {
-        moonGeo = moonSTLGeometry.clone();
-        // Calculate bounding box to scale model to moon size
-        moonGeo.computeBoundingBox();
-        const box = moonGeo.boundingBox;
-        const size = new THREE.Vector3();
-        box.getSize(size);
-        const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = moonData.size / maxDim;
-        moonGeo.scale(scale, scale, scale);
-      } else {
-        moonGeo = new THREE.SphereGeometry(moonData.size, 32, 32);
-      }
+      // Use sphere geometry for moons
+      const moonGeo = new THREE.SphereGeometry(moonData.size, 32, 32);
       const moonMat = new THREE.MeshStandardMaterial({
         color: moonData.color,
         roughness: 0.9,
         metalness: 0.1
       });
       const moonMesh = new THREE.Mesh(moonGeo, moonMat);
-      // Store reference to moon mesh for STL geometry update
-      if (moonData.name === "Moon") {
-        moonMeshRef = moonMesh;
-      }
       const moonPivot = new THREE.Object3D();
       moonPivot.add(moonMesh);
       moonMesh.position.x = moonData.dist;
@@ -2219,7 +2220,8 @@ celestialBodies.forEach((body) => {
         mesh: moonMesh,
         pivot: moonPivot,
         speed: moonData.speed,
-        spaceObjects: spaceObjects
+        spaceObjects: spaceObjects,
+        name: moonData.name
       });
     });
   }
@@ -2405,7 +2407,7 @@ function animate() {
           // For Earth's Moon: tidal locking - compensate orbital rotation to always face Earth
           // For other moons: normal rotation
           const body = celestialBodies[planetMeshes.indexOf(p)];
-          const isEarthMoon = body && body.name === "Earth" && moon.mesh === moonMeshRef;
+          const isEarthMoon = body && body.name === "Earth" && moon.name === "Moon";
           if (isEarthMoon) {
             // Compensate orbital rotation to keep Moon facing Earth (tidal locking)
             moon.mesh.rotation.y -= moon.speed * realTimeMultiplier;
