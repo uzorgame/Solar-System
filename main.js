@@ -1487,11 +1487,11 @@ const celestialBodies = [
         name: "MAVEN",
         modelPath: "Mars Atmosphere and Volatile EvolutioN (MAVEN) (A).glb",
         size: 0.0693, // Increased by 20% (0.05775 * 1.2)
-        // Elliptical orbit parameters (semi-major axis in planet radii, eccentricity, inclination, etc.)
+        // Highly elliptical polar orbit parameters
         orbit: {
-          semiMajorAxis: 1.5, // Average distance in planet radii
-          eccentricity: 0.3, // Elliptical orbit
-          inclination: 0.1, // Slight inclination in radians
+          semiMajorAxis: 3.5, // Increased to accommodate highly elliptical orbit
+          eccentricity: 0.7, // Highly elliptical (elongated) orbit
+          inclination: 1.4, // Polar orbit (approximately 90 degrees, passes over Mars poles)
           argumentOfPeriapsis: 0, // Argument of periapsis
           meanAnomaly: 0, // Starting position
           orbitalPeriod: 4.5 // Hours (MAVEN's orbital period)
