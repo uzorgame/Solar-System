@@ -1902,6 +1902,7 @@ let emuGLTFModel = null;
 let mavenGLTFModel = null;
 let junoGLTFModel = null;
 let spaceObjectMeshesRefs = []; // References to space object meshes for model update
+let spaceProbeMeshesRefs = []; // References to space probe meshes for model update
 
 gltfLoader.load(
   `${BASE_URL}Models/emu_spacesuit.glb`,
@@ -1915,6 +1916,7 @@ gltfLoader.load(
       console.log('First child:', gltf.scene.children[0]);
     }
     console.log('Space object refs count:', spaceObjectMeshesRefs.length);
+    console.log('Space probe refs count:', spaceProbeMeshesRefs.length);
     // Update space object meshes if they already exist
     spaceObjectMeshesRefs.forEach((ref, index) => {
       if (ref && ref.pivot && ref.spaceObjRef && emuGLTFModel && emuGLTFModel.scene) {
@@ -2031,6 +2033,85 @@ gltfLoader.load(
         });
       }
     });
+    
+    // Update space probe meshes for OREST and EMMA
+    spaceProbeMeshesRefs.forEach((ref) => {
+      if ((ref.name === "OREST" || ref.name === "EMMA") && ref.pivot && ref.probeRef && emuGLTFModel && emuGLTFModel.scene) {
+        console.log(`Updating ${ref.name} space probe geometry with GLB model`);
+        const clonedScene = emuGLTFModel.scene.clone();
+        
+        // Fix materials
+        clonedScene.traverse((child) => {
+          if (child.isMesh) {
+            if (child.material) {
+              const materials = Array.isArray(child.material) ? child.material : [child.material];
+              const newMaterials = materials.map((material) => {
+                if (material) {
+                  return new THREE.MeshStandardMaterial({
+                    map: material.map || null,
+                    normalMap: material.normalMap || null,
+                    roughnessMap: material.roughnessMap || null,
+                    metalnessMap: material.metalnessMap || null,
+                    emissiveMap: material.emissiveMap || null,
+                    color: material.color ? material.color.clone() : new THREE.Color(0.9, 0.9, 0.9),
+                    roughness: material.roughness !== undefined ? material.roughness : 0.7,
+                    metalness: material.metalness !== undefined ? material.metalness : 0.3,
+                    emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
+                    transparent: false,
+                    opacity: 1.0,
+                    depthWrite: true,
+                    blending: THREE.NormalBlending
+                  });
+                }
+                return new THREE.MeshStandardMaterial({ color: 0xffffff });
+              });
+              if (Array.isArray(child.material)) {
+                child.material = newMaterials;
+              } else {
+                child.material = newMaterials[0];
+              }
+            } else {
+              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            }
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        // Calculate bounding box to scale model
+        const box = new THREE.Box3().setFromObject(clonedScene);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = ref.probeRef.probeData.size / maxDim;
+        clonedScene.scale.set(scale, scale, scale);
+        
+        // Replace old mesh
+        const oldMesh = ref.mesh;
+        const pivot = ref.pivot;
+        if (pivot && oldMesh) {
+          const oldPosition = oldMesh.position.clone();
+          pivot.remove(oldMesh);
+          
+          // Dispose old mesh
+          if (oldMesh.geometry) oldMesh.geometry.dispose();
+          if (oldMesh.material) {
+            if (Array.isArray(oldMesh.material)) {
+              oldMesh.material.forEach(mat => mat.dispose());
+            } else {
+              oldMesh.material.dispose();
+            }
+          }
+          
+          clonedScene.position.copy(oldPosition);
+          pivot.add(clonedScene);
+          
+          // Update references
+          ref.mesh = clonedScene;
+          ref.probeRef.mesh = clonedScene;
+        }
+      }
+    });
   },
   (progress) => {
     if (progress.lengthComputable) {
@@ -2052,6 +2133,84 @@ gltfLoader.load(
   (gltf) => {
     mavenGLTFModel = gltf;
     console.log('MAVEN GLB model loaded successfully');
+    // Update MAVEN meshes if they already exist
+    spaceProbeMeshesRefs.forEach((ref) => {
+      if (ref.name === "MAVEN" && ref.pivot && ref.probeRef && mavenGLTFModel && mavenGLTFModel.scene) {
+        console.log('Updating MAVEN geometry with GLB model');
+        const clonedScene = mavenGLTFModel.scene.clone();
+        
+        // Fix materials
+        clonedScene.traverse((child) => {
+          if (child.isMesh) {
+            if (child.material) {
+              const materials = Array.isArray(child.material) ? child.material : [child.material];
+              const newMaterials = materials.map((material) => {
+                if (material) {
+                  return new THREE.MeshStandardMaterial({
+                    map: material.map || null,
+                    normalMap: material.normalMap || null,
+                    roughnessMap: material.roughnessMap || null,
+                    metalnessMap: material.metalnessMap || null,
+                    emissiveMap: material.emissiveMap || null,
+                    color: material.color ? material.color.clone() : new THREE.Color(0.9, 0.9, 0.9),
+                    roughness: material.roughness !== undefined ? material.roughness : 0.7,
+                    metalness: material.metalness !== undefined ? material.metalness : 0.3,
+                    emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
+                    transparent: false,
+                    opacity: 1.0,
+                    depthWrite: true,
+                    blending: THREE.NormalBlending
+                  });
+                }
+                return new THREE.MeshStandardMaterial({ color: 0xffffff });
+              });
+              if (Array.isArray(child.material)) {
+                child.material = newMaterials;
+              } else {
+                child.material = newMaterials[0];
+              }
+            } else {
+              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            }
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        // Calculate bounding box to scale model
+        const box = new THREE.Box3().setFromObject(clonedScene);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = ref.probeRef.probeData.size / maxDim;
+        clonedScene.scale.set(scale, scale, scale);
+        
+        // Replace old mesh
+        const oldMesh = ref.mesh;
+        const pivot = ref.pivot;
+        if (pivot && oldMesh) {
+          const oldPosition = oldMesh.position.clone();
+          pivot.remove(oldMesh);
+          
+          // Dispose old mesh
+          if (oldMesh.geometry) oldMesh.geometry.dispose();
+          if (oldMesh.material) {
+            if (Array.isArray(oldMesh.material)) {
+              oldMesh.material.forEach(mat => mat.dispose());
+            } else {
+              oldMesh.material.dispose();
+            }
+          }
+          
+          clonedScene.position.copy(oldPosition);
+          pivot.add(clonedScene);
+          
+          // Update references
+          ref.mesh = clonedScene;
+          ref.probeRef.mesh = clonedScene;
+        }
+      }
+    });
   },
   (progress) => {
     if (progress.lengthComputable) {
@@ -2069,6 +2228,84 @@ gltfLoader.load(
   (gltf) => {
     junoGLTFModel = gltf;
     console.log('Juno GLB model loaded successfully');
+    // Update Juno meshes if they already exist
+    spaceProbeMeshesRefs.forEach((ref) => {
+      if (ref.name === "Juno" && ref.pivot && ref.probeRef && junoGLTFModel && junoGLTFModel.scene) {
+        console.log('Updating Juno geometry with GLB model');
+        const clonedScene = junoGLTFModel.scene.clone();
+        
+        // Fix materials
+        clonedScene.traverse((child) => {
+          if (child.isMesh) {
+            if (child.material) {
+              const materials = Array.isArray(child.material) ? child.material : [child.material];
+              const newMaterials = materials.map((material) => {
+                if (material) {
+                  return new THREE.MeshStandardMaterial({
+                    map: material.map || null,
+                    normalMap: material.normalMap || null,
+                    roughnessMap: material.roughnessMap || null,
+                    metalnessMap: material.metalnessMap || null,
+                    emissiveMap: material.emissiveMap || null,
+                    color: material.color ? material.color.clone() : new THREE.Color(0.9, 0.9, 0.9),
+                    roughness: material.roughness !== undefined ? material.roughness : 0.7,
+                    metalness: material.metalness !== undefined ? material.metalness : 0.3,
+                    emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
+                    transparent: false,
+                    opacity: 1.0,
+                    depthWrite: true,
+                    blending: THREE.NormalBlending
+                  });
+                }
+                return new THREE.MeshStandardMaterial({ color: 0xffffff });
+              });
+              if (Array.isArray(child.material)) {
+                child.material = newMaterials;
+              } else {
+                child.material = newMaterials[0];
+              }
+            } else {
+              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            }
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        // Calculate bounding box to scale model
+        const box = new THREE.Box3().setFromObject(clonedScene);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = ref.probeRef.probeData.size / maxDim;
+        clonedScene.scale.set(scale, scale, scale);
+        
+        // Replace old mesh
+        const oldMesh = ref.mesh;
+        const pivot = ref.pivot;
+        if (pivot && oldMesh) {
+          const oldPosition = oldMesh.position.clone();
+          pivot.remove(oldMesh);
+          
+          // Dispose old mesh
+          if (oldMesh.geometry) oldMesh.geometry.dispose();
+          if (oldMesh.material) {
+            if (Array.isArray(oldMesh.material)) {
+              oldMesh.material.forEach(mat => mat.dispose());
+            } else {
+              oldMesh.material.dispose();
+            }
+          }
+          
+          clonedScene.position.copy(oldPosition);
+          pivot.add(clonedScene);
+          
+          // Update references
+          ref.mesh = clonedScene;
+          ref.probeRef.mesh = clonedScene;
+        }
+      }
+    });
   },
   (progress) => {
     if (progress.lengthComputable) {
@@ -2330,8 +2567,18 @@ celestialBodies.forEach((body) => {
         meanAnomaly: meanAnomaly,
         name: probeData.name,
         info: probeData.info,
-        body: body // Store reference to body for Moon lookup
+        body: body, // Store reference to body for Moon lookup
+        probeData: probeData // Store probe data for model update
       };
+      
+      // Store reference for GLB model update
+      spaceProbeMeshesRefs.push({
+        mesh: probeMesh,
+        pivot: probePivot,
+        probeRef: probeRef,
+        name: probeData.name,
+        body: body
+      });
       
       spaceProbes.push(probeRef);
     });
