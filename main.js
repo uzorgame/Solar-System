@@ -24,6 +24,7 @@ const translations = {
     stopFollow: "Stop Follow",
     toggle: "Toggle",
     orbits: "Orbits",
+    spaceProbeOrbits: "Space Probe Orbits",
     moons: "Moons",
     realAsteroids: "Real Asteroids",
     comets: "Comets",
@@ -105,6 +106,7 @@ const translations = {
     stopFollow: "Зупинити відстеження",
     toggle: "Перемикач",
     orbits: "Орбіти",
+    spaceProbeOrbits: "Орбіти Космічні Апарати",
     moons: "Супутники",
     realAsteroids: "Справжні астероїди",
     comets: "Комети",
@@ -186,6 +188,7 @@ const translations = {
     stopFollow: "Zastavit sledování",
     toggle: "Přepínač",
     orbits: "Dráhy",
+    spaceProbeOrbits: "Dráhy kosmických sond",
     moons: "Měsíce",
     realAsteroids: "Skutečné asteroidy",
     comets: "Komety",
@@ -526,6 +529,8 @@ function updateUITexts() {
   if (stopFollowBtn) stopFollowBtn.textContent = t('stopFollow');
   const orbitsBtn = document.getElementById('orbitsBtn');
   if (orbitsBtn) orbitsBtn.textContent = t('orbits');
+  const spaceProbeOrbitsBtn = document.getElementById('spaceProbeOrbitsBtn');
+  if (spaceProbeOrbitsBtn) spaceProbeOrbitsBtn.textContent = t('spaceProbeOrbits');
   
   // Update planet info card labels if card is visible
   const labels = document.querySelectorAll('.info-item-label');
@@ -2892,11 +2897,64 @@ celestialBodies.forEach((body) => {
       const pos = calculateEllipticalOrbit(orbit, meanAnomaly);
       probeMesh.position.set(pos.x, pos.y, pos.z);
       
+      // Create elliptical orbit visualization for space probe
+      const orbitPoints = [];
+      const numPoints = 128;
+      for (let i = 0; i <= numPoints; i++) {
+        const angle = (i / numPoints) * Math.PI * 2;
+        const pos = calculateEllipticalOrbit(orbit, angle);
+        orbitPoints.push(new THREE.Vector3(pos.x, pos.y, pos.z));
+      }
+      const orbitGeometry = new THREE.BufferGeometry().setFromPoints(orbitPoints);
+      
+      // Use similar colors to planet orbits based on parent planet distance
+      let orbitColor, glowIntensity, baseOpacity;
+      if (body.dist < 20) {
+        orbitColor = new THREE.Color(0.3, 0.5, 0.7);
+        glowIntensity = 0.03;
+        baseOpacity = 0.02;
+      } else if (body.dist < 35) {
+        orbitColor = new THREE.Color(0.5, 0.4, 0.7);
+        glowIntensity = 0.05;
+        baseOpacity = 0.03;
+      } else {
+        orbitColor = new THREE.Color(0.7, 0.3, 0.4);
+        glowIntensity = 0.07;
+        baseOpacity = 0.04;
+      }
+      
+      let orbitMat;
+      try {
+        orbitMat = new THREE.LineBasicMaterial({
+          color: orbitColor,
+          emissive: orbitColor,
+          emissiveIntensity: glowIntensity,
+          transparent: true,
+          opacity: baseOpacity,
+          toneMapped: false,
+        });
+      } catch (error) {
+        console.warn("Emissive material failed, using basic material:", error);
+        orbitMat = new THREE.LineBasicMaterial({
+          color: orbitColor,
+          transparent: true,
+          opacity: baseOpacity * 2,
+        });
+      }
+      
+      const orbitLine = new THREE.Line(orbitGeometry, orbitMat);
+      // Orbit is relative to planet center, so position at origin
+      orbitLine.position.set(0, 0, 0);
+      // Attach orbit to the planet mesh (parent of probePivot)
+      mesh.add(orbitLine);
+      orbitLine.visible = showSpaceProbeOrbits;
+      
       // Create space probe reference for animation
       const probeRef = {
         mesh: probeMesh,
         pivot: probePivot,
         orbit: orbit,
+        orbitLine: orbitLine, // Store reference to orbit line
         meanAnomaly: meanAnomaly,
         name: probeData.name,
         info: probeData.info,
@@ -3154,6 +3212,7 @@ let isPaused = false;
 let currentDate = new Date();
 let timePerFrame = 1000 * 60 * 60 * 24;
 let showOrbits = true;
+let showSpaceProbeOrbits = true;
 let showAsteroids = true;
 let showMoons = true;
 let showPlanetLabels = false;
@@ -3568,6 +3627,23 @@ if (orbitsBtn) {
     planetMeshes.forEach(planet => {
       if (planet.orbit) {
         planet.orbit.visible = showOrbits;
+      }
+    });
+  });
+}
+const spaceProbeOrbitsBtn = document.getElementById('spaceProbeOrbitsBtn');
+if (spaceProbeOrbitsBtn) {
+  spaceProbeOrbitsBtn.addEventListener('click', () => {
+    showSpaceProbeOrbits = !showSpaceProbeOrbits;
+    spaceProbeOrbitsBtn.classList.toggle('active', showSpaceProbeOrbits);
+    // Toggle visibility of all space probe orbits
+    planetMeshes.forEach(planet => {
+      if (planet.spaceProbes && planet.spaceProbes.length > 0) {
+        planet.spaceProbes.forEach(probe => {
+          if (probe.orbitLine) {
+            probe.orbitLine.visible = showSpaceProbeOrbits;
+          }
+        });
       }
     });
   });
