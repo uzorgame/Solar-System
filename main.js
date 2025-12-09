@@ -1401,6 +1401,40 @@ const celestialBodies = [
     discoveryYear: "N/A",
     realAU: 1.0,
     orbitalPeriodDays: 365.256,
+    spaceProbes: [
+      {
+        name: "OREST",
+        modelPath: "emu_spacesuit.glb",
+        size: 0.05775,
+        // Circular orbit around Moon
+        orbit: {
+          semiMajorAxis: 0.35, // Distance in planet radii (Moon orbit radius)
+          eccentricity: 0.0, // Circular orbit
+          inclination: 0.0,
+          argumentOfPeriapsis: 0,
+          meanAnomaly: 0,
+          orbitalPeriod: 0.0001 // Very slow orbit
+        },
+        color: new THREE.Color(1.0, 1.0, 1.0),
+        info: "OREST, the wandering satellite - discovery year 2019 - a traveling satellite in the cold cosmos, known for its attraction to the new and unknown."
+      },
+      {
+        name: "EMMA",
+        modelPath: "emu_spacesuit.glb",
+        size: 0.05775,
+        // Circular orbit around Moon
+        orbit: {
+          semiMajorAxis: 0.35, // Distance in planet radii (Moon orbit radius)
+          eccentricity: 0.0, // Circular orbit
+          inclination: 0.0,
+          argumentOfPeriapsis: 0,
+          meanAnomaly: Math.PI / 3, // Start at different angle
+          orbitalPeriod: 0.0001 // Very slow orbit
+        },
+        color: new THREE.Color(1.0, 1.0, 1.0),
+        info: "EMMA, the elegant satellite - discovery year 2020 - at a time when the world stopped, she came to revive it and give colors to everyday grayness."
+      }
+    ],
     moons: [
       { 
         name: "Moon", 
@@ -1409,11 +1443,7 @@ const celestialBodies = [
         speed: 0.037, 
         color: new THREE.Color(0.53, 0.53, 0.53), 
         info: "Earth's only natural satellite. Formed 4.5 billion years ago.", 
-        initialAngle: 1.2,
-        spaceObjects: [
-          { name: "OREST", size: 0.05775, dist: 0.35, speed: 0.0001, color: new THREE.Color(1.0, 1.0, 1.0), initialAngle: 0 },
-          { name: "EMMA", size: 0.05775, dist: 0.35, speed: 0.0001, color: new THREE.Color(1.0, 1.0, 1.0), initialAngle: Math.PI / 3 }
-        ]
+        initialAngle: 1.2
       }
     ]
   },
@@ -2205,6 +2235,8 @@ celestialBodies.forEach((body) => {
         gltfModel = mavenGLTFModel;
       } else if (probeData.name === "Juno" && junoGLTFModel) {
         gltfModel = junoGLTFModel;
+      } else if ((probeData.name === "OREST" || probeData.name === "EMMA") && emuGLTFModel) {
+        gltfModel = emuGLTFModel;
       }
       
       // Use GLB model if available, otherwise use sphere
@@ -2272,7 +2304,17 @@ celestialBodies.forEach((body) => {
       
       const probePivot = new THREE.Object3D();
       probePivot.add(probeMesh);
-      mesh.add(probePivot);
+      
+      // For OREST and EMMA, attach to Moon instead of planet
+      // We'll find the Moon mesh later in the animation
+      if (probeData.name === "OREST" || probeData.name === "EMMA") {
+        // Store reference to attach to Moon later
+        probePivot.userData.attachToMoon = true;
+        // Add to planet mesh for now, will be moved to Moon in animation
+        mesh.add(probePivot);
+      } else {
+        mesh.add(probePivot);
+      }
       
       // Initialize elliptical orbit position
       const orbit = probeData.orbit;
@@ -2287,7 +2329,8 @@ celestialBodies.forEach((body) => {
         orbit: orbit,
         meanAnomaly: meanAnomaly,
         name: probeData.name,
-        info: probeData.info
+        info: probeData.info,
+        body: body // Store reference to body for Moon lookup
       };
       
       spaceProbes.push(probeRef);
@@ -2721,26 +2764,67 @@ function animate() {
       // Update space probes with elliptical orbits
       if (p.spaceProbes && p.spaceProbes.length > 0) {
         p.spaceProbes.forEach((probe) => {
-          // Update mean anomaly based on orbital period
-          // orbitalPeriod is in hours or days
-          const orbitalPeriod = probe.orbit.orbitalPeriod;
-          // Convert to seconds
-          const periodInSeconds = orbitalPeriod < 1 ? orbitalPeriod * 3600 : orbitalPeriod * 24 * 3600;
-          // Calculate angular speed in radians per second
-          const angularSpeedRadPerSec = (2 * Math.PI) / periodInSeconds;
-          // Convert to radians per frame (assuming 60 FPS)
-          const frameTime = timePerFrame / 1000; // Convert to seconds
-          const angularSpeed = angularSpeedRadPerSec * frameTime;
-          
-          // Update mean anomaly
-          probe.meanAnomaly += angularSpeed * realTimeMultiplier;
-          if (probe.meanAnomaly > 2 * Math.PI) {
-            probe.meanAnomaly -= 2 * Math.PI;
+          // Special handling for OREST and EMMA - they orbit around Moon
+          if (probe.name === "OREST" || probe.name === "EMMA") {
+            // Find Moon mesh
+            const moon = p.moons && p.moons.length > 0 ? p.moons.find(m => m.name === "Moon") : null;
+            if (moon && moon.mesh) {
+              // Attach to Moon if not already attached
+              if (probe.pivot.parent !== moon.mesh) {
+                const oldParent = probe.pivot.parent;
+                if (oldParent) {
+                  oldParent.remove(probe.pivot);
+                }
+                moon.mesh.add(probe.pivot);
+              }
+              
+              // Update mean anomaly - use speed from orbit
+              const speed = probe.orbit.orbitalPeriod > 0 ? (2 * Math.PI) / (probe.orbit.orbitalPeriod * 24 * 3600) : 0.0001;
+              probe.meanAnomaly += speed * realTimeMultiplier * (timePerFrame / 1000);
+              if (probe.meanAnomaly > 2 * Math.PI) {
+                probe.meanAnomaly -= 2 * Math.PI;
+              }
+              
+              // Calculate position relative to Moon
+              const pos = calculateEllipticalOrbit(probe.orbit, probe.meanAnomaly);
+              probe.mesh.position.set(pos.x, pos.y, pos.z);
+              
+              // Make probe face Moon (similar to old behavior)
+              const moonWorldPos = new THREE.Vector3();
+              moon.mesh.getWorldPosition(moonWorldPos);
+              const probeWorldPos = new THREE.Vector3();
+              probe.pivot.getWorldPosition(probeWorldPos);
+              const directionToMoon = new THREE.Vector3().subVectors(moonWorldPos, probeWorldPos).normalize();
+              const forward = new THREE.Vector3(1, 0, 0);
+              const quaternion = new THREE.Quaternion().setFromUnitVectors(forward, directionToMoon);
+              const additionalRotation = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), -160 * Math.PI / 180);
+              quaternion.multiply(additionalRotation);
+              if (probe.mesh.quaternion) {
+                probe.mesh.quaternion.copy(quaternion);
+              }
+            }
+          } else {
+            // Normal space probes orbiting the planet
+            // Update mean anomaly based on orbital period
+            const orbitalPeriod = probe.orbit.orbitalPeriod;
+            // Convert to seconds
+            const periodInSeconds = orbitalPeriod < 1 ? orbitalPeriod * 3600 : orbitalPeriod * 24 * 3600;
+            // Calculate angular speed in radians per second
+            const angularSpeedRadPerSec = (2 * Math.PI) / periodInSeconds;
+            // Convert to radians per frame (assuming 60 FPS)
+            const frameTime = timePerFrame / 1000; // Convert to seconds
+            const angularSpeed = angularSpeedRadPerSec * frameTime;
+            
+            // Update mean anomaly
+            probe.meanAnomaly += angularSpeed * realTimeMultiplier;
+            if (probe.meanAnomaly > 2 * Math.PI) {
+              probe.meanAnomaly -= 2 * Math.PI;
+            }
+            
+            // Calculate new position on elliptical orbit
+            const pos = calculateEllipticalOrbit(probe.orbit, probe.meanAnomaly);
+            probe.mesh.position.set(pos.x, pos.y, pos.z);
           }
-          
-          // Calculate new position on elliptical orbit
-          const pos = calculateEllipticalOrbit(probe.orbit, probe.meanAnomaly);
-          probe.mesh.position.set(pos.x, pos.y, pos.z);
         });
       }
     });
