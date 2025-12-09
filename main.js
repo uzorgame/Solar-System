@@ -1784,7 +1784,7 @@ let emuGLTFModel = null;
 let spaceObjectMeshesRefs = []; // References to space object meshes for model update
 
 gltfLoader.load(
-  `${BASE_URL}textures/emu_spacesuit.glb`,
+  `${BASE_URL}Models/emu_spacesuit.glb`,
   (gltf) => {
     emuGLTFModel = gltf;
     console.log('EMU spacesuit GLB model loaded successfully', gltf);
