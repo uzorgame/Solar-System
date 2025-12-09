@@ -4075,7 +4075,10 @@ function showPlanetInfoCard(body, planetIndex) {
 }
 let currentPlanetIndex = null;
 let followingTarget = null; 
-let followingType = null; 
+let followingType = null;
+let isRotatingCamera = false; // Track if user is actively rotating camera
+let mouseDownTime = 0; // Track when mouse was pressed down
+let mouseMoveDistance = 0; // Track mouse movement distance 
 function updateFollowButtonState(planetIndex) {
   const followBtn = document.getElementById('followPlanetBtn');
   const stopFollowBtn = document.getElementById('stopFollowBtn');
@@ -4141,8 +4144,13 @@ function followSpaceProbe(probeMesh, probeData, parentPlanetName) {
   lastPlanetPosition.set(0, 0, 0);
   userCameraOffset.set(0, 0, 0);
   controls.enableZoom = true;
-  // Allow much closer zoom for space probes (0.35 = 30% closer than 0.5)
-  controls.minDistance = 0.35;
+  // Allow much closer zoom for space probes
+  // For JUNO and MAVEN, allow even closer zoom (0.15 = much closer than 0.35)
+  if (probeData.name === "JUNO" || probeData.name === "MAVEN") {
+    controls.minDistance = 0.15;
+  } else {
+    controls.minDistance = 0.35;
+  }
   controls.maxDistance = distance * 4;
   const stopFollowBtn = document.getElementById('stopFollowBtn');
   if (stopFollowBtn) {
@@ -4206,6 +4214,13 @@ function onMouseClick(event) {
       event.target.closest('.planet-info-card')) {
     return;
   }
+  
+  // Block clicks on planets when following space probe and user was rotating camera
+  if (followingType === 'spaceProbe' && (isRotatingCamera || mouseMoveDistance > 5)) {
+    // User was rotating camera around space probe, don't process planet clicks
+    return;
+  }
+  
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
   raycaster.setFromCamera(mouse, camera);
@@ -4252,6 +4267,53 @@ function onMouseClick(event) {
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 window.addEventListener('click', onMouseClick);
+
+// Track camera rotation to prevent accidental planet clicks when viewing space probes
+let lastMousePosition = { x: 0, y: 0 };
+let isMouseDown = false;
+
+renderer.domElement.addEventListener('mousedown', (event) => {
+  if (event.button === 0) { // Left mouse button
+    isMouseDown = true;
+    mouseDownTime = Date.now();
+    mouseMoveDistance = 0;
+    lastMousePosition.x = event.clientX;
+    lastMousePosition.y = event.clientY;
+    isRotatingCamera = false;
+  }
+});
+
+renderer.domElement.addEventListener('mousemove', (event) => {
+  if (isMouseDown) {
+    const dx = event.clientX - lastMousePosition.x;
+    const dy = event.clientY - lastMousePosition.y;
+    mouseMoveDistance += Math.sqrt(dx * dx + dy * dy);
+    lastMousePosition.x = event.clientX;
+    lastMousePosition.y = event.clientY;
+    
+    // If mouse moved significantly, user is rotating camera
+    if (mouseMoveDistance > 3) {
+      isRotatingCamera = true;
+    }
+  }
+});
+
+renderer.domElement.addEventListener('mouseup', (event) => {
+  if (event.button === 0) { // Left mouse button
+    isMouseDown = false;
+    // Reset rotation flag after a short delay to allow click processing
+    setTimeout(() => {
+      isRotatingCamera = false;
+      mouseMoveDistance = 0;
+    }, 100);
+  }
+});
+
+renderer.domElement.addEventListener('mouseleave', () => {
+  isMouseDown = false;
+  isRotatingCamera = false;
+  mouseMoveDistance = 0;
+});
 document.getElementById('closePlanetInfo').addEventListener('click', hidePlanetInfoCard);
 document.getElementById('followPlanetBtn').addEventListener('click', () => {
   if (currentPlanetIndex !== null) {
