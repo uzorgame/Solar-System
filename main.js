@@ -2093,11 +2093,22 @@ celestialBodies.forEach((body) => {
     body.moons.forEach((moonData) => {
       // Use sphere geometry for moons
       const moonGeo = new THREE.SphereGeometry(moonData.size, 32, 32);
-      const moonMat = new THREE.MeshStandardMaterial({
-        color: moonData.color,
-        roughness: 0.9,
-        metalness: 0.1
-      });
+      let moonMat;
+      // Use texture for Earth's Moon if available
+      if (body.name === "Earth" && moonData.name === "Moon") {
+        const moonTexture = loader.load(`${BASE_URL}textures/moon.png`);
+        moonMat = new THREE.MeshStandardMaterial({
+          map: moonTexture,
+          roughness: 0.9,
+          metalness: 0.1
+        });
+      } else {
+        moonMat = new THREE.MeshStandardMaterial({
+          color: moonData.color,
+          roughness: 0.9,
+          metalness: 0.1
+        });
+      }
       const moonMesh = new THREE.Mesh(moonGeo, moonMat);
       const moonPivot = new THREE.Object3D();
       moonPivot.add(moonMesh);
