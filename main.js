@@ -1577,7 +1577,7 @@ const celestialBodies = [
           eccentricity: 0.65, // Highly elliptical orbit
           inclination: 0.15, // Slight inclination in radians
           argumentOfPeriapsis: 0,
-          meanAnomaly: 0,
+          meanAnomaly: Math.PI, // Start at opposite side from JUNO (180 degrees) to visualize orbital shift
           orbitalPeriod: 75 // Days (Galileo's typical orbital period around Jupiter)
         },
         color: new THREE.Color(0.85, 0.88, 0.92),
