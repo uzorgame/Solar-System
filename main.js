@@ -2771,12 +2771,14 @@ const planetList = document.getElementById('planetList');
   if (!planetList) return;
   planetList.innerHTML = '';
   const groupedBodies = {
+    star: celestialBodies.filter(b => b.type === 'star'),
     planet: celestialBodies.filter(b => b.type === 'planet'),
     dwarf: celestialBodies.filter(b => b.type === 'dwarf'),
     asteroid: celestialBodies.filter(b => b.type === 'asteroid'),
     tno: celestialBodies.filter(b => b.type === 'tno')
   };
   const typeLabels = {
+    star: `${t('star')}S`,
     planet: `${t('planet')}S`,
     dwarf: `${t('dwarfPlanet')}S`, 
     asteroid: `MAJOR ${t('asteroid')}S`,
@@ -2807,6 +2809,7 @@ const planetList = document.getElementById('planetList');
         ${moonText}
       `;
       planetItem.addEventListener('click', () => {
+        showPlanetInfoCard(body, globalIndex);
         const planet = planetMeshes[globalIndex];
         if (planet) {
           followingPlanet = planet;
@@ -3338,7 +3341,14 @@ function onMouseClick(event) {
   if (intersects.length > 0) {
     const intersectedObject = intersects[0].object;
     if (intersectedObject === sun) {
-      followSun();
+      // Find Sun in celestialBodies array
+      const sunIndex = celestialBodies.findIndex(body => body.name === "Sun");
+      if (sunIndex !== -1) {
+        const sunBody = celestialBodies[sunIndex];
+        showPlanetInfoCard(sunBody, sunIndex);
+      } else {
+        followSun();
+      }
       return;
     }
     const planetIndex = planetMeshObjects.indexOf(intersectedObject);
