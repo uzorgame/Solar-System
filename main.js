@@ -24,7 +24,6 @@ const translations = {
     stopFollow: "Stop Follow",
     toggle: "Toggle",
     orbits: "Orbits",
-    moonOrbits: "Moon Orbits",
     spaceProbeOrbits: "Space Probe Orbits",
     moons: "Moons",
     realAsteroids: "Real Asteroids",
@@ -107,7 +106,6 @@ const translations = {
     stopFollow: "Зупинити відстеження",
     toggle: "Перемикач",
     orbits: "Орбіти",
-    moonOrbits: "Орбіти Супутників",
     spaceProbeOrbits: "Орбіти Космічні Апарати",
     moons: "Супутники",
     realAsteroids: "Справжні астероїди",
@@ -190,7 +188,6 @@ const translations = {
     stopFollow: "Zastavit sledování",
     toggle: "Přepínač",
     orbits: "Dráhy",
-    moonOrbits: "Dráhy měsíců",
     spaceProbeOrbits: "Dráhy kosmických sond",
     moons: "Měsíce",
     realAsteroids: "Skutečné asteroidy",
@@ -532,8 +529,6 @@ function updateUITexts() {
   if (stopFollowBtn) stopFollowBtn.textContent = t('stopFollow');
   const orbitsBtn = document.getElementById('orbitsBtn');
   if (orbitsBtn) orbitsBtn.textContent = t('orbits');
-  const moonOrbitsBtn = document.getElementById('moonOrbitsBtn');
-  if (moonOrbitsBtn) moonOrbitsBtn.textContent = t('moonOrbits');
   const spaceProbeOrbitsBtn = document.getElementById('spaceProbeOrbitsBtn');
   if (spaceProbeOrbitsBtn) spaceProbeOrbitsBtn.textContent = t('spaceProbeOrbits');
   
@@ -612,7 +607,6 @@ function updateUITexts() {
 }
 // Global variables for orbit visibility
 let showSpaceProbeOrbits = true;
-let showMoonOrbits = true;
 const scene = new THREE.Scene();
 // Set initial background color (will be replaced when texture loads)
 scene.background = new THREE.Color(0x000814);
@@ -3027,56 +3021,6 @@ celestialBodies.forEach((body) => {
       }
       mesh.add(moonPivot);
       
-      // Create moon orbit visualization (circular orbit)
-      const moonOrbitGeo = new THREE.RingGeometry(
-        moonData.dist - 0.02,
-        moonData.dist + 0.02,
-        64
-      );
-      
-      // Use similar colors to planet orbits based on parent planet distance
-      let moonOrbitColor, moonGlowIntensity, moonBaseOpacity;
-      if (body.dist < 20) {
-        moonOrbitColor = new THREE.Color(0.3, 0.5, 0.7);
-        moonGlowIntensity = 0.03;
-        moonBaseOpacity = 0.02;
-      } else if (body.dist < 35) {
-        moonOrbitColor = new THREE.Color(0.5, 0.4, 0.7);
-        moonGlowIntensity = 0.05;
-        moonBaseOpacity = 0.03;
-      } else {
-        moonOrbitColor = new THREE.Color(0.7, 0.3, 0.4);
-        moonGlowIntensity = 0.07;
-        moonBaseOpacity = 0.04;
-      }
-      
-      let moonOrbitMat;
-      try {
-        moonOrbitMat = new THREE.MeshBasicMaterial({
-          color: moonOrbitColor,
-          emissive: moonOrbitColor,
-          emissiveIntensity: moonGlowIntensity,
-          side: THREE.DoubleSide,
-          transparent: true,
-          opacity: moonBaseOpacity,
-          toneMapped: false,
-        });
-      } catch (error) {
-        console.warn("Emissive material failed, using basic material:", error);
-        moonOrbitMat = new THREE.MeshBasicMaterial({
-          color: moonOrbitColor,
-          side: THREE.DoubleSide,
-          transparent: true,
-          opacity: moonBaseOpacity * 2,
-        });
-      }
-      
-      const moonOrbit = new THREE.Mesh(moonOrbitGeo, moonOrbitMat);
-      moonOrbit.rotation.x = Math.PI / 2;
-      moonOrbit.position.y = -0.01;
-      mesh.add(moonOrbit);
-      moonOrbit.visible = showMoonOrbits;
-      
       // Create space objects orbiting the moon
       const spaceObjects = [];
       if (moonData.spaceObjects && moonData.spaceObjects.length > 0) {
@@ -3191,8 +3135,7 @@ celestialBodies.forEach((body) => {
         pivot: moonPivot,
         speed: moonData.speed,
         spaceObjects: spaceObjects,
-        name: moonData.name,
-        orbit: moonOrbit // Store reference to orbit
+        name: moonData.name
       });
     });
   }
@@ -3675,23 +3618,6 @@ if (orbitsBtn) {
     planetMeshes.forEach(planet => {
       if (planet.orbit) {
         planet.orbit.visible = showOrbits;
-      }
-    });
-  });
-}
-const moonOrbitsBtn = document.getElementById('moonOrbitsBtn');
-if (moonOrbitsBtn) {
-  moonOrbitsBtn.addEventListener('click', () => {
-    showMoonOrbits = !showMoonOrbits;
-    moonOrbitsBtn.classList.toggle('active', showMoonOrbits);
-    // Toggle visibility of all moon orbits
-    planetMeshes.forEach(planet => {
-      if (planet.moons && planet.moons.length > 0) {
-        planet.moons.forEach(moon => {
-          if (moon.orbit) {
-            moon.orbit.visible = showMoonOrbits;
-          }
-        });
       }
     });
   });
