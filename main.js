@@ -2086,9 +2086,8 @@ celestialBodies.forEach((body) => {
       alphaMap: ringTex,
     });
     const ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.rotation.x = Math.PI / 2;
-    // Tilt rings by 15 degrees (15 * Math.PI / 180 = Math.PI / 12)
-    ring.rotation.z = Math.PI / 12;
+    // Tilt rings by 15 degrees: start from horizontal (Math.PI / 2) and add tilt
+    ring.rotation.x = Math.PI / 2 + Math.PI / 12; // 15 degrees tilt (Math.PI / 12 = 15°)
     ring.castShadow = true;
     ring.receiveShadow = true;
     mesh.add(ring);
