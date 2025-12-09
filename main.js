@@ -2146,7 +2146,7 @@ gltfLoader.load(
         console.log('Updating MAVEN geometry with GLB model');
         const clonedScene = mavenGLTFModel.scene.clone();
         
-        // Fix materials
+        // Fix materials - Apply metallic silver color for MAVEN
         clonedScene.traverse((child) => {
           if (child.isMesh) {
             if (child.material) {
@@ -2159,9 +2159,10 @@ gltfLoader.load(
                     roughnessMap: material.roughnessMap || null,
                     metalnessMap: material.metalnessMap || null,
                     emissiveMap: material.emissiveMap || null,
-                    color: material.color ? material.color.clone() : new THREE.Color(0.9, 0.9, 0.9),
-                    roughness: material.roughness !== undefined ? material.roughness : 0.7,
-                    metalness: material.metalness !== undefined ? material.metalness : 0.3,
+                    // Metallic silver color for MAVEN spacecraft
+                    color: material.map ? (material.color ? material.color.clone() : new THREE.Color(0.7, 0.7, 0.75)) : new THREE.Color(0.7, 0.7, 0.75),
+                    roughness: material.roughness !== undefined ? material.roughness : 0.3,
+                    metalness: material.metalness !== undefined ? material.metalness : 0.8,
                     emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
                     transparent: false,
                     opacity: 1.0,
@@ -2169,7 +2170,12 @@ gltfLoader.load(
                     blending: THREE.NormalBlending
                   });
                 }
-                return new THREE.MeshStandardMaterial({ color: 0xffffff });
+                // Default metallic silver for MAVEN
+                return new THREE.MeshStandardMaterial({ 
+                  color: new THREE.Color(0.7, 0.7, 0.75),
+                  metalness: 0.8,
+                  roughness: 0.3
+                });
               });
               if (Array.isArray(child.material)) {
                 child.material = newMaterials;
@@ -2177,7 +2183,12 @@ gltfLoader.load(
                 child.material = newMaterials[0];
               }
             } else {
-              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+              // Default metallic silver for MAVEN
+              child.material = new THREE.MeshStandardMaterial({ 
+                color: new THREE.Color(0.7, 0.7, 0.75),
+                metalness: 0.8,
+                roughness: 0.3
+              });
             }
             child.castShadow = true;
             child.receiveShadow = true;
@@ -2488,13 +2499,33 @@ celestialBodies.forEach((body) => {
         console.log('Using GLB model for', probeData.name);
         const clonedScene = gltfModel.scene.clone();
         
-        // Fix materials
+        // Fix materials - Apply special colors for different probes
         clonedScene.traverse((child) => {
           if (child.isMesh) {
             if (child.material) {
               const materials = Array.isArray(child.material) ? child.material : [child.material];
               const newMaterials = materials.map((material) => {
                 if (material) {
+                  // Special material for MAVEN - metallic silver
+                  if (probeData.name === "MAVEN") {
+                    return new THREE.MeshStandardMaterial({
+                      map: material.map || null,
+                      normalMap: material.normalMap || null,
+                      roughnessMap: material.roughnessMap || null,
+                      metalnessMap: material.metalnessMap || null,
+                      emissiveMap: material.emissiveMap || null,
+                      // Metallic silver color for MAVEN spacecraft
+                      color: material.map ? (material.color ? material.color.clone() : new THREE.Color(0.7, 0.7, 0.75)) : new THREE.Color(0.7, 0.7, 0.75),
+                      roughness: material.roughness !== undefined ? material.roughness : 0.3,
+                      metalness: material.metalness !== undefined ? material.metalness : 0.8,
+                      emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
+                      transparent: false,
+                      opacity: 1.0,
+                      depthWrite: true,
+                      blending: THREE.NormalBlending
+                    });
+                  }
+                  // Default material for other probes
                   return new THREE.MeshStandardMaterial({
                     map: material.map || null,
                     normalMap: material.normalMap || null,
@@ -2511,6 +2542,14 @@ celestialBodies.forEach((body) => {
                     blending: THREE.NormalBlending
                   });
                 }
+                // Default material based on probe type
+                if (probeData.name === "MAVEN") {
+                  return new THREE.MeshStandardMaterial({ 
+                    color: new THREE.Color(0.7, 0.7, 0.75),
+                    metalness: 0.8,
+                    roughness: 0.3
+                  });
+                }
                 return new THREE.MeshStandardMaterial({ color: 0xffffff });
               });
               if (Array.isArray(child.material)) {
@@ -2519,7 +2558,16 @@ celestialBodies.forEach((body) => {
                 child.material = newMaterials[0];
               }
             } else {
-              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+              // Default material based on probe type
+              if (probeData.name === "MAVEN") {
+                child.material = new THREE.MeshStandardMaterial({ 
+                  color: new THREE.Color(0.7, 0.7, 0.75),
+                  metalness: 0.8,
+                  roughness: 0.3
+                });
+              } else {
+                child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+              }
             }
             child.castShadow = true;
             child.receiveShadow = true;
