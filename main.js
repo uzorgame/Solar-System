@@ -2669,23 +2669,26 @@ gltfLoader.load(
         const scale = ref.probeRef.probeData.size / maxDim;
         clonedScene.scale.set(scale, scale, scale);
         
-        // Get old mesh and pivot
+        // Replace old mesh
         const oldMesh = ref.mesh;
         const pivot = ref.pivot;
-        const oldPosition = oldMesh.position.clone();
-        
-        // Dispose old mesh
-        if (oldMesh.geometry) oldMesh.geometry.dispose();
-        if (oldMesh.material) {
-          if (Array.isArray(oldMesh.material)) {
-            oldMesh.material.forEach(mat => mat.dispose());
-          } else {
-            oldMesh.material.dispose();
+        if (pivot && oldMesh) {
+          const oldPosition = oldMesh.position.clone();
+          pivot.remove(oldMesh);
+          
+          // Dispose old mesh
+          if (oldMesh.geometry) oldMesh.geometry.dispose();
+          if (oldMesh.material) {
+            if (Array.isArray(oldMesh.material)) {
+              oldMesh.material.forEach(mat => mat.dispose());
+            } else {
+              oldMesh.material.dispose();
+            }
           }
+          
+          clonedScene.position.copy(oldPosition);
+          pivot.add(clonedScene);
         }
-        
-        clonedScene.position.copy(oldPosition);
-        pivot.add(clonedScene);
         
         // Update references
         ref.mesh = clonedScene;
