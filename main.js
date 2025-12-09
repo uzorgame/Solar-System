@@ -381,6 +381,7 @@ const moonDescriptions = {
     "Earth-EMMA": "EMMA, the elegant satellite - discovery year 2020 - at a time when the world stopped, she came to revive it and give colors to everyday grayness. EMMA carves her own path in the darkness - a small but significant road that reminds us: even in the boundless cosmos there is a place for warmth and tenderness. A symbol of quiet rebirth and that humanity is capable of sincerity.",
     "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) is a NASA spacecraft orbiting Mars since 2014, studying the planet's upper atmosphere, ionosphere, and interactions with the Sun and solar wind. The mission aims to understand how Mars lost its atmosphere and water over time, providing crucial insights into the planet's climate history and potential for past habitability. MAVEN's elliptical orbit allows it to sample different altitudes of the Martian atmosphere.",
     "Jupiter-JUNO": "JUNO is a NASA spacecraft that arrived at Jupiter in 2016, entering a highly elliptical polar orbit to study the gas giant's composition, gravity field, magnetic field, and polar magnetosphere. The mission has revealed stunning details about Jupiter's atmosphere, including its Great Red Spot, and has provided insights into the planet's formation and evolution. JUNO's unique orbit allows it to avoid Jupiter's intense radiation belts while conducting close-up observations. Initially, it was planned that after the first orbits, JUNO would perform a maneuver to transition to a shorter, 14-day scientific orbit. However, due to problems with the main engine valves, it was decided to keep the spacecraft on this longer but safer 53.5-day orbit. The spacecraft spends most of its time far from the planet, then quickly passes over Jupiter's poles, coming closest to its clouds (at perijove) to collect scientific data, before moving away again to complete its 53.5-day orbit.",
+    "Jupiter-Galileo Orbiter": "Galileo Orbiter was a NASA spacecraft that studied Jupiter and its moons from 1995 to 2003, becoming the first spacecraft to orbit the gas giant. Launched in 1989, Galileo arrived at Jupiter in 1995 after a six-year journey that included flybys of Venus, Earth, and two asteroids. The mission made groundbreaking discoveries, including evidence of subsurface oceans on Europa, Ganymede, and Callisto, active volcanism on Io, and detailed observations of Jupiter's atmosphere and magnetosphere. Galileo's highly elliptical orbit allowed it to make multiple close flybys of Jupiter's major moons, providing the first detailed images and data from these distant worlds. The mission ended in 2003 when the spacecraft was deliberately crashed into Jupiter's atmosphere to prevent contamination of Europa, which is considered a potential habitat for life.",
     "Saturn-Cassini–Huygens": "Cassini–Huygens was a joint NASA/ESA/ASI mission that spent 13 years studying Saturn, its rings, and moons. Launched in 1997, Cassini entered orbit around Saturn in 2004 and conducted groundbreaking observations until its mission ended in 2017 with a deliberate plunge into Saturn's atmosphere. The Huygens probe successfully landed on Titan in 2005, becoming the first spacecraft to land on a moon in the outer solar system. Cassini's highly elliptical orbit allowed it to study Saturn's magnetosphere, rings, and numerous moons, including discovering geysers on Enceladus and lakes on Titan, revolutionizing our understanding of the Saturnian system. The probe's orbital period varied from 18 to 50 days due to its elliptical orbit and frequent course corrections throughout the mission.",
     "Orcus-Vanth": "Vanth is the only known moon of the dwarf planet candidate Orcus, discovered in 2005 by Mike Brown and his team using the Hubble Space Telescope, and is unusually large relative to Orcus, comprising about 3% of the system's total mass. The moon has an estimated diameter of about 443 kilometers, making it one of the largest known trans-Neptunian object satellites, and orbits Orcus at a distance of approximately 9,000 kilometers, taking about 9.5 days to complete one orbit. Vanth's large size relative to Orcus suggests it may have formed from a major collision, similar to how Earth's Moon formed, and its orbit is nearly circular and aligned with Orcus's equator.",
     "Gonggong-Xiangliu": "Xiangliu is the only known moon of the scattered disc object Gonggong, discovered in 2016 by a team using the Hubble Space Telescope, and is named after the nine-headed snake monster from Chinese mythology that served the water god Gonggong. The moon has an estimated diameter of about 300 kilometers and orbits Gonggong at a distance of approximately 24,000 kilometers, taking about 25 days to complete one orbit in a nearly circular path. Observations of Xiangliu's orbit have been crucial in determining Gonggong's mass, and the moon's discovery has provided important insights into the formation and evolution of distant objects in the outer solar system.",
@@ -432,6 +433,7 @@ const moonDescriptions = {
     "Earth-EMMA": "Емма, витончений супутник - рік відкриття 2020 - у час, коли світ зупинився, вона прийшла, щоб його оживити і дати кольори буденній сірості. Емма прокладає власну стежку у темряві - маленьку, але значущу дорогу, що нагадує: навіть у безмежному космосі є місце теплу й ніжності. Символом тихого відродження і що людство здатне на щире.",
     "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) — це космічний апарат NASA, який обертається навколо Марса з 2014 року, вивчаючи верхню атмосферу планети, іоносферу та взаємодії з Сонцем та сонячним вітром. Місія спрямована на розуміння того, як Марс втратив свою атмосферу та воду з часом, надаючи важливі дані про кліматичну історію планети та потенціал для минулої придатності до життя. Еліптична орбіта MAVEN дозволяє йому вибірково досліджувати різні висоти марсіанської атмосфери.",
     "Jupiter-JUNO": "JUNO — це космічний апарат NASA, який прибув до Юпітера в 2016 році, вийшовши на високоеліптичну полярну орбіту для вивчення складу газового гіганта, гравітаційного поля, магнітного поля та полярної магнітосфери. Місія розкрила вражаючі деталі про атмосферу Юпітера, включаючи Велику червону пляму, та надала інформацію про формування та еволюцію планети. Унікальна орбіта JUNO дозволяє йому уникати інтенсивних радіаційних поясів Юпітера, проводячи близькі спостереження. Спочатку планувалося, що після перших витків JUNO виконає маневр для переходу на коротшу, 14-денну наукову орбіту. Однак через проблеми з клапанами головного двигуна було прийнято рішення залишити апарат на цій довшій, але безпечній 53,5-денній орбіті. Апарат проводить більшу частину часу далеко від планети, а потім швидко пролітає над полюсами Юпітера, максимально наближаючись до його хмар (в перийовії) для збору наукових даних, після чого знову віддаляється від планети, завершуючи свій 53,5-денний виток.",
+    "Jupiter-Galileo Orbiter": "Galileo Orbiter був космічним апаратом NASA, який вивчав Юпітер та його супутники з 1995 по 2003 рік, ставши першим космічним апаратом, який обертався навколо газового гіганта. Запущений в 1989 році, Galileo прибув до Юпітера в 1995 році після шестирічної подорожі, яка включала прольоти біля Венери, Землі та двох астероїдів. Місія зробила революційні відкриття, включаючи докази підповерхневих океанів на Європі, Ганімеді та Каллісто, активний вулканізм на Іо та детальні спостереження атмосфери та магнітосфери Юпітера. Високоеліптична орбіта Galileo дозволила йому зробити численні близькі прольоти біля головних супутників Юпітера, надавши перші детальні зображення та дані з цих віддалених світів. Місія завершилася в 2003 році, коли космічний апарат був навмисно розбитий об атмосферу Юпітера, щоб запобігти забрудненню Європи, яка вважається потенційним середовищем для життя.",
     "Saturn-Cassini–Huygens": "Cassini–Huygens була спільною місією NASA/ESA/ASI, яка провела 13 років, вивчаючи Сатурн, його кільця та супутники. Запущена в 1997 році, Cassini вийшла на орбіту навколо Сатурна в 2004 році та проводила революційні спостереження до завершення місії в 2017 році з навмисним падінням в атмосферу Сатурна. Зонд Huygens успішно приземлився на Титан в 2005 році, ставши першим космічним апаратом, який приземлився на супутник у зовнішній Сонячній системі. Високоеліптична орбіта Cassini дозволила їй вивчати магнітосферу Сатурна, кільця та численні супутники, включаючи відкриття гейзерів на Енцеладі та озер на Титані, революціонізуючи наше розуміння системи Сатурна. Орбітальний період зонда змінювався від 18 до 50 днів через еліптичну орбіту та часті корекції курсу протягом місії."
   },
   cs: {
@@ -479,6 +481,7 @@ const moonDescriptions = {
     "Earth-EMMA": "EMMA, elegantní satelit - rok objevu 2020 - v době, kdy se svět zastavil, přišla, aby ho oživila a dala barvy všední šedi. EMMA si proklestila vlastní stezku v temnotě - malou, ale významnou cestu, která připomíná: i v bezhraničném vesmíru je místo pro teplo a něhu. Symbol tichého znovuzrození a toho, že lidstvo je schopno upřímnosti.",
     "Mars-MAVEN": "MAVEN (Mars Atmosphere and Volatile EvolutioN) je kosmická sonda NASA obíhající kolem Marsu od roku 2014, která studuje horní atmosféru planety, ionosféru a interakce se Sluncem a slunečním větrem. Mise si klade za cíl pochopit, jak Mars ztratil svou atmosféru a vodu v průběhu času, což poskytuje klíčové poznatky o klimatické historii planety a potenciálu pro minulou obyvatelnost. Elipsovitá orbita MAVEN umožňuje sondě vzorkovat různé výšky marsovské atmosféry.",
     "Jupiter-JUNO": "JUNO je kosmická sonda NASA, která dorazila k Jupiteru v roce 2016, vstoupila na vysoce eliptickou polární orbitu, aby studovala složení plynného obra, gravitační pole, magnetické pole a polární magnetosféru. Mise odhalila úžasné detaily o Jupiterově atmosféře, včetně Velké rudé skvrny, a poskytla poznatky o formování a vývoji planety. Unikátní orbita JUNO umožňuje sondě vyhnout se intenzivním radiačním pásům Jupiteru při provádění blízkých pozorování. Původně bylo plánováno, že po prvních obězích JUNO provede manévr pro přechod na kratší, 14denní vědeckou orbitu. Avšak kvůli problémům s ventily hlavního motoru bylo rozhodnuto ponechat sondu na této delší, ale bezpečnější 53,5denní orbitě. Sonda tráví většinu času daleko od planety, pak rychle přelétá nad póly Jupiteru, maximálně se přibližuje k jeho mrakům (v perijoviu) pro sběr vědeckých dat, než se znovu vzdálí od planety a dokončí svůj 53,5denní oběh.",
+    "Jupiter-Galileo Orbiter": "Galileo Orbiter byla kosmická sonda NASA, která studovala Jupiter a jeho měsíce od roku 1995 do 2003, stala se prvním kosmickým aparátem, který obíhal kolem plynného obra. Vypuštěna v roce 1989, Galileo dorazila k Jupiteru v roce 1995 po šestileté cestě, která zahrnovala průlety kolem Venuše, Země a dvou asteroidů. Mise učinila převratné objevy, včetně důkazů o podpovrchových oceánech na Europě, Ganymedu a Callistu, aktivním vulkanismu na Io a detailních pozorování Jupiterovy atmosféry a magnetosféry. Vysoce eliptická orbita Galileo umožnila provést mnoho blízkých průletů kolem hlavních měsíců Jupiteru, poskytujíc první detailní snímky a data z těchto vzdálených světů. Mise skončila v roce 2003, kdy byla sonda záměrně zničena v Jupiterově atmosféře, aby se zabránilo kontaminaci Europy, která je považována za potenciální prostředí pro život.",
     "Saturn-Cassini–Huygens": "Cassini–Huygens byla společná mise NASA/ESA/ASI, která strávila 13 let studiem Saturnu, jeho prstenců a měsíců. Vypuštěna v roce 1997, Cassini vstoupila na orbitu kolem Saturnu v roce 2004 a prováděla převratná pozorování až do ukončení mise v roce 2017 záměrným ponořením do atmosféry Saturnu. Sonda Huygens úspěšně přistála na Titanu v roce 2005, stala se prvním kosmickým aparátem, který přistál na měsíci ve vnější sluneční soustavě. Vysoce eliptická orbita Cassini umožnila studovat magnetosféru Saturnu, prstence a četné měsíce, včetně objevení gejzírů na Enceladu a jezer na Titanu, což revolučně změnilo naše chápání saturnského systému. Orbitální perioda sondy se měnila od 18 do 50 dní kvůli eliptické oběžné dráze a častým korekcím kurzu během mise."
   }
 };
@@ -1563,6 +1566,22 @@ const celestialBodies = [
         },
         color: new THREE.Color(0.9, 0.9, 0.95),
         info: "JUNO mission studying Jupiter's composition, gravity field, magnetic field, and polar magnetosphere."
+      },
+      {
+        name: "Galileo Orbiter",
+        modelPath: "galileo_orbiter.glb",
+        size: 0.08, // Appropriate size relative to Jupiter
+        // Elliptical orbit parameters based on real Galileo mission
+        orbit: {
+          semiMajorAxis: 6, // Average distance in planet radii
+          eccentricity: 0.65, // Highly elliptical orbit
+          inclination: 0.15, // Slight inclination in radians
+          argumentOfPeriapsis: 0,
+          meanAnomaly: 0,
+          orbitalPeriod: 75 // Days (Galileo's typical orbital period around Jupiter)
+        },
+        color: new THREE.Color(0.85, 0.88, 0.92),
+        info: "Galileo Orbiter mission studying Jupiter, its moons, and magnetosphere from 1995 to 2003."
       }
     ],
     moons: [
@@ -1937,6 +1956,7 @@ let emuGLTFModel = null;
 let mavenGLTFModel = null;
 let junoGLTFModel = null;
 let cassiniGLTFModel = null;
+let galileoGLTFModel = null;
 
 // Create procedural texture for MAVEN spacecraft
 function createMAVENTexture() {
@@ -2706,6 +2726,101 @@ gltfLoader.load(
   }
 );
 
+// Load Galileo Orbiter GLB model
+gltfLoader.load(
+  `${BASE_URL}Models/Space probe/Jupiter/galileo_orbiter.glb`,
+  (gltf) => {
+    galileoGLTFModel = gltf;
+    console.log('Galileo Orbiter GLB model loaded successfully');
+    // Update Galileo meshes if they already exist
+    spaceProbeMeshesRefs.forEach((ref) => {
+      if (ref.name === "Galileo Orbiter" && ref.pivot && ref.probeRef && galileoGLTFModel && galileoGLTFModel.scene) {
+        console.log('Updating Galileo Orbiter geometry with GLB model');
+        const clonedScene = galileoGLTFModel.scene.clone();
+        
+        // Fix materials
+        clonedScene.traverse((child) => {
+          if (child.isMesh) {
+            if (child.material) {
+              const materials = Array.isArray(child.material) ? child.material : [child.material];
+              const newMaterials = materials.map((material) => {
+                if (material) {
+                  return new THREE.MeshStandardMaterial({
+                    map: material.map || null,
+                    normalMap: material.normalMap || null,
+                    roughnessMap: material.roughnessMap || null,
+                    metalnessMap: material.metalnessMap || null,
+                    emissiveMap: material.emissiveMap || null,
+                    color: material.color ? material.color.clone() : new THREE.Color(0.85, 0.88, 0.92),
+                    roughness: material.roughness !== undefined ? material.roughness : 0.7,
+                    metalness: material.metalness !== undefined ? material.metalness : 0.3,
+                    emissive: material.emissive ? material.emissive.clone() : new THREE.Color(0, 0, 0),
+                    transparent: false,
+                    opacity: 1.0,
+                    depthWrite: true,
+                    blending: THREE.NormalBlending
+                  });
+                }
+                return new THREE.MeshStandardMaterial({ color: 0xffffff });
+              });
+              if (Array.isArray(child.material)) {
+                child.material = newMaterials;
+              } else {
+                child.material = newMaterials[0];
+              }
+            } else {
+              child.material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+            }
+            child.castShadow = true;
+            child.receiveShadow = true;
+          }
+        });
+        
+        // Calculate bounding box to scale model
+        const box = new THREE.Box3().setFromObject(clonedScene);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = ref.probeRef.probeData.size / maxDim;
+        clonedScene.scale.set(scale, scale, scale);
+        
+        // Replace old mesh
+        const oldMesh = ref.mesh;
+        const pivot = ref.pivot;
+        if (pivot && oldMesh) {
+          const oldPosition = oldMesh.position.clone();
+          pivot.remove(oldMesh);
+          
+          // Dispose old mesh
+          if (oldMesh.geometry) oldMesh.geometry.dispose();
+          if (oldMesh.material) {
+            if (Array.isArray(oldMesh.material)) {
+              oldMesh.material.forEach(mat => mat.dispose());
+            } else {
+              oldMesh.material.dispose();
+            }
+          }
+          
+          clonedScene.position.copy(oldPosition);
+          pivot.add(clonedScene);
+          
+          // Update references
+          ref.mesh = clonedScene;
+          ref.probeRef.mesh = clonedScene;
+        }
+      }
+    });
+  },
+  (progress) => {
+    if (progress.lengthComputable) {
+      console.log('Loading Galileo Orbiter GLB:', (progress.loaded / progress.total * 100) + '%');
+    }
+  },
+  (error) => {
+    console.error('Error loading Galileo Orbiter GLB:', error);
+  }
+);
+
 const planetMeshes = [];
 celestialBodies.forEach((body) => {
   // Skip Sun as it's already created separately
@@ -2863,6 +2978,8 @@ celestialBodies.forEach((body) => {
         gltfModel = junoGLTFModel;
       } else if (probeData.name === "Cassini–Huygens" && cassiniGLTFModel) {
         gltfModel = cassiniGLTFModel;
+      } else if (probeData.name === "Galileo Orbiter" && galileoGLTFModel) {
+        gltfModel = galileoGLTFModel;
       } else if ((probeData.name === "OREST" || probeData.name === "EMMA") && emuGLTFModel) {
         gltfModel = emuGLTFModel;
       }
@@ -4702,8 +4819,8 @@ function followSpaceProbe(probeMesh, probeData, parentPlanetName) {
   userCameraOffset.set(0, 0, 0);
   controls.enableZoom = true;
   // Allow much closer zoom for space probes
-  // For JUNO, MAVEN, and Cassini–Huygens, allow even closer zoom (0.15 = much closer than 0.35)
-  if (probeData.name === "JUNO" || probeData.name === "MAVEN" || probeData.name === "Cassini–Huygens") {
+  // For JUNO, MAVEN, Cassini–Huygens, and Galileo Orbiter, allow even closer zoom (0.15 = much closer than 0.35)
+  if (probeData.name === "JUNO" || probeData.name === "MAVEN" || probeData.name === "Cassini–Huygens" || probeData.name === "Galileo Orbiter") {
     controls.minDistance = 0.15;
   } else {
     controls.minDistance = 0.35;
