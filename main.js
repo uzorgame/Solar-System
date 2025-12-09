@@ -84,7 +84,9 @@ const translations = {
     sunInfo: "The star at the center of our Solar System. A G-type main-sequence star (G2V) that formed approximately 4.6 billion years ago. Contains 99.86% of the Solar System's mass. Surface temperature: 5,778 K. Core temperature: ~15 million K. Rotates around the galactic center in ~225-250 million years.",
     sunSizeRelative: "109.2x Earth",
     sunDistance: "0 AU (Center)",
-    sunOrbitalPeriod: "N/A (Galactic orbit: ~225-250 million years)"
+    sunOrbitalPeriod: "~225-250 million years",
+    galacticOrbit: "Galactic Orbit",
+    follow: "FOLLOW"
   },
   uk: {
     missionControl: "Керування",
@@ -158,7 +160,9 @@ const translations = {
     sunInfo: "Зірка в центрі нашої Сонячної системи. Зірка головної послідовності типу G (G2V), що сформувалася приблизно 4,6 мільярда років тому. Містить 99,86% маси Сонячної системи. Температура поверхні: 5,778 K. Температура ядра: ~15 мільйонів K. Обертається навколо галактичного центру за ~225-250 мільйонів років.",
     sunSizeRelative: "109,2x Землі",
     sunDistance: "0 АО (Центр)",
-    sunOrbitalPeriod: "Н/Д (Галактична орбіта: ~225-250 мільйонів років)"
+    sunOrbitalPeriod: "~225-250 мільйонів земних років",
+    galacticOrbit: "Галактична орбіта",
+    follow: "ВІДСТЕЖИТИ"
   },
   cs: {
     missionControl: "Ovládání",
@@ -232,7 +236,9 @@ const translations = {
     sunInfo: "Hvězda ve středu naší Sluneční soustavy. Hvězda hlavní posloupnosti typu G (G2V), která se zformovala přibližně před 4,6 miliardami let. Obsahuje 99,86% hmotnosti Sluneční soustavy. Teplota povrchu: 5,778 K. Teplota jádra: ~15 milionů K. Obíhá kolem galaktického centra za ~225-250 milionů let.",
     sunSizeRelative: "109,2x Země",
     sunDistance: "0 AU (Střed)",
-    sunOrbitalPeriod: "N/A (Galaktická orbita: ~225-250 milionů let)"
+    sunOrbitalPeriod: "~225-250 milionů pozemských let",
+    galacticOrbit: "Galaktická orbita",
+    follow: "SLEDOVAT"
   }
 };
 const bodyDescriptions = {
@@ -2857,6 +2863,11 @@ function showPlanetInfoCard(body, planetIndex) {
   // Handle orbital period
   if (body.type === 'star') {
     orbitalPeriod.textContent = t('sunOrbitalPeriod');
+    // Change label to "Galactic Orbit"
+    const orbitalPeriodLabel = document.querySelectorAll('.info-item-label')[0];
+    if (orbitalPeriodLabel) {
+      orbitalPeriodLabel.textContent = t('galacticOrbit');
+    }
   } else {
     // Use real orbital period if available, otherwise calculate from realAU, otherwise fallback to old formula
     let orbitalPeriodYears;
@@ -2884,16 +2895,40 @@ function showPlanetInfoCard(body, planetIndex) {
     sizeRelative.textContent = `${body.size}x ${t('earth')}`;
   }
   
-  // Handle distance from Sun
+  // Handle distance from Sun - hide for stars
   if (body.type === 'star') {
-    distanceFromSun.textContent = t('sunDistance');
+    // Hide distance from Sun item
+    const distanceItem = distanceFromSun.closest('.info-item');
+    if (distanceItem) {
+      distanceItem.style.display = 'none';
+    }
   } else {
     // Use realAU if available, otherwise use dist
     const displayDistance = body.realAU !== undefined ? body.realAU : body.dist;
     distanceFromSun.textContent = `${displayDistance.toFixed(2)} ${t('au')}`;
+    // Show distance item for non-stars
+    const distanceItem = distanceFromSun.closest('.info-item');
+    if (distanceItem) {
+      distanceItem.style.display = 'block';
+    }
   }
-  discoveryYear.textContent = body.discoveryYear === 'Ancient' ? t('ancient') : 
-                               body.discoveryYear === 'N/A' ? t('na') : body.discoveryYear;
+  
+  // Handle discovery year - hide for stars
+  if (body.type === 'star') {
+    // Hide discovery year item
+    const discoveryItem = discoveryYear.closest('.info-item');
+    if (discoveryItem) {
+      discoveryItem.style.display = 'none';
+    }
+  } else {
+    discoveryYear.textContent = body.discoveryYear === 'Ancient' ? t('ancient') : 
+                                 body.discoveryYear === 'N/A' ? t('na') : body.discoveryYear;
+    // Show discovery year item for non-stars
+    const discoveryItem = discoveryYear.closest('.info-item');
+    if (discoveryItem) {
+      discoveryItem.style.display = 'block';
+    }
+  }
   const translatedInfo = getBodyInfo(body.name);
   const originalPlanetDescription = translatedInfo || body.info;
   planetDescription.textContent = originalPlanetDescription;
@@ -2921,7 +2956,11 @@ function showPlanetInfoCard(body, planetIndex) {
   // Update all info labels regardless of current language
   const labels = document.querySelectorAll('.info-item-label');
   if (labels.length >= 4) {
-    labels[0].textContent = t('orbitalPeriod');
+    if (body.type === 'star') {
+      labels[0].textContent = t('galacticOrbit');
+    } else {
+      labels[0].textContent = t('orbitalPeriod');
+    }
     labels[1].textContent = t('sizeRelative');
     labels[2].textContent = t('distanceFromSun');
     labels[3].textContent = t('discoveryYear');
@@ -2932,7 +2971,11 @@ function showPlanetInfoCard(body, planetIndex) {
   }
   const followPlanetBtn = document.getElementById('followPlanetBtn');
   if (followPlanetBtn) {
-    followPlanetBtn.textContent = t('followPlanet');
+    if (body.type === 'star') {
+      followPlanetBtn.textContent = t('follow');
+    } else {
+      followPlanetBtn.textContent = t('followPlanet');
+    }
   }
   if (body.moons && body.moons.length > 0) {
     moonsSection.style.display = 'block';
