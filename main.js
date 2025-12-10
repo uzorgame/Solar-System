@@ -1492,7 +1492,7 @@ const celestialBodies = [
         size: 0.0693, // Increased by 20% (0.05775 * 1.2)
         // Highly elliptical polar orbit parameters
         orbit: {
-          semiMajorAxis: 3.5, // Increased to accommodate highly elliptical orbit
+          semiMajorAxis: 1.2, // Very close orbit - MAVEN passes very close to Mars
           eccentricity: 0.7, // Highly elliptical (elongated) orbit
           inclination: 1.4, // Polar orbit (approximately 90 degrees, passes over Mars poles)
           argumentOfPeriapsis: 0, // Argument of periapsis

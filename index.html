@@ -906,6 +906,34 @@
       font-family: var(--font-primary);
     }
 
+    .uzor-logo {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 3px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--panel-shadow);
+      padding: 10px 16px;
+      z-index: 1000;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .uzor-logo:hover {
+      background: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
     .lang-btn {
       background: var(--button-secondary);
       color: var(--text-primary);
@@ -1197,6 +1225,8 @@
       </div>
     </div>
   </div>
+
+  <div class="uzor-logo">UZOR</div>
 
   <div class="language-switcher">
     <button class="lang-btn active" id="langEn" data-lang="en">EN</button>

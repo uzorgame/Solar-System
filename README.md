@@ -90,14 +90,62 @@ After running `npm run dev`:
 
 ```
 Solar-System/
-├── index.html          # Main HTML file
-├── main.js             # Main application logic
-├── package.json        # Project dependencies
-├── vite.config.js      # Vite configuration
-├── public/
-│   └── textures/       # Planet textures
-└── dist/               # Built version (after build)
+├── index.html          # Main HTML file with UI and styles
+├── main.js             # Main application logic (3D scene, planets, animations)
+├── package.json        # Project dependencies and scripts
+├── vite.config.mjs     # Vite configuration
+├── DEPENDENCIES.md     # Detailed documentation about dependencies
+├── README.md           # This file - project documentation
+├── LICENSE             # License information
+├── favicon.ico         # Website icon
+├── public/             # Public assets (copied to dist/ during build)
+│   ├── Models/         # 3D models (space probes, asteroids)
+│   │   ├── Asteroid/    # Asteroid models
+│   │   ├── Space probe/ # Space probe models (MAVEN, JUNO, Cassini, etc.)
+│   │   └── emu_spacesuit.glb  # Spacesuit model
+│   ├── textures/        # Planet and space textures (JPG, PNG)
+│   └── SolarIcon.png    # Solar system icon
+├── dist/                # Built version (created after npm run build)
+│   ├── index.html       # Optimized HTML
+│   ├── textures/        # Copied textures
+│   └── assets/          # Bundled JavaScript and CSS
+└── node_modules/        # Dependencies (installed via npm install)
+    ├── three/           # Three.js library (3D graphics)
+    ├── vite/            # Vite build tool
+    └── ...              # Other dependencies (see DEPENDENCIES.md)
 ```
+
+### Detailed Structure Explanation
+
+#### Root Files
+- **index.html** - Contains the HTML structure, CSS styles, and basic UI elements (control panels, info cards, language switcher)
+- **main.js** - The heart of the application. Contains:
+  - Three.js scene setup (camera, renderer, lighting)
+  - Planet and celestial body definitions
+  - Animation loops
+  - User interaction handlers
+  - 3D model loading
+  - Orbit calculations
+- **package.json** - Defines project dependencies (three, vite) and npm scripts
+- **vite.config.mjs** - Configuration for Vite build tool
+
+#### public/ Directory
+This directory contains assets that are copied as-is to the `dist/` folder during build:
+- **Models/** - 3D models in GLB/GLTF format:
+  - Space probes: MAVEN (Mars), JUNO (Jupiter), Cassini (Saturn), Galileo (Jupiter)
+  - Asteroids: Vesta
+  - Other: Spacesuit model
+- **textures/** - Image files for planets, stars, and space:
+  - Planet textures (8k resolution for better quality)
+  - Starfield background
+  - Ring textures for Saturn
+  - Lens flare effects
+
+#### dist/ Directory
+Created automatically when you run `npm run build`. Contains the optimized, production-ready version of the project.
+
+#### node_modules/ Directory
+Contains all installed dependencies. See `DEPENDENCIES.md` for detailed explanation of what each dependency does.
 
 ## 🔧 Troubleshooting
 
@@ -214,14 +262,62 @@ npm run build
 
 ```
 Solar-System/
-├── index.html          # Основний HTML файл
-├── main.js             # Основна логіка додатку
-├── package.json        # Залежності проєкту
-├── vite.config.js      # Конфігурація Vite
-├── public/
-│   └── textures/       # Текстури планет
-└── dist/               # Зібрана версія (після збірки)
+├── index.html          # Основний HTML файл з UI та стилями
+├── main.js             # Основна логіка додатку (3D сцена, планети, анімації)
+├── package.json        # Залежності проєкту та скрипти
+├── vite.config.mjs     # Конфігурація Vite
+├── DEPENDENCIES.md     # Детальна документація про залежності
+├── README.md           # Цей файл - документація проєкту
+├── LICENSE             # Інформація про ліцензію
+├── favicon.ico         # Іконка сайту
+├── public/             # Публічні ресурси (копіюються в dist/ під час збірки)
+│   ├── Models/         # 3D моделі (космічні зонди, астероїди)
+│   │   ├── Asteroid/    # Моделі астероїдів
+│   │   ├── Space probe/ # Моделі космічних зондів (MAVEN, JUNO, Cassini тощо)
+│   │   └── emu_spacesuit.glb  # Модель скафандра
+│   ├── textures/        # Текстури планет та космосу (JPG, PNG)
+│   └── SolarIcon.png    # Іконка Сонячної системи
+├── dist/                # Зібрана версія (створюється після npm run build)
+│   ├── index.html       # Оптимізований HTML
+│   ├── textures/        # Скопійовані текстури
+│   └── assets/          # Зібрані JavaScript та CSS файли
+└── node_modules/        # Залежності (встановлюються через npm install)
+    ├── three/           # Бібліотека Three.js (3D графіка)
+    ├── vite/            # Інструмент збірки Vite
+    └── ...              # Інші залежності (див. DEPENDENCIES.md)
 ```
+
+### Детальне пояснення структури
+
+#### Основні файли
+- **index.html** - Містить HTML структуру, CSS стилі та базові UI елементи (панелі керування, інформаційні картки, перемикач мови)
+- **main.js** - Серце додатку. Містить:
+  - Налаштування сцени Three.js (камера, рендерер, освітлення)
+  - Визначення планет та небесних тіл
+  - Цикли анімації
+  - Обробники взаємодії користувача
+  - Завантаження 3D моделей
+  - Розрахунки орбіт
+- **package.json** - Визначає залежності проєкту (three, vite) та npm скрипти
+- **vite.config.mjs** - Конфігурація для інструменту збірки Vite
+
+#### Директорія public/
+Ця директорія містить ресурси, які копіюються як є в папку `dist/` під час збірки:
+- **Models/** - 3D моделі у форматі GLB/GLTF:
+  - Космічні зонди: MAVEN (Марс), JUNO (Юпітер), Cassini (Сатурн), Galileo (Юпітер)
+  - Астероїди: Vesta
+  - Інше: Модель скафандра
+- **textures/** - Файли зображень для планет, зірок та космосу:
+  - Текстури планет (роздільність 8k для кращої якості)
+  - Фон зірок
+  - Текстури кілець для Сатурна
+  - Ефекти лінзових спалахів
+
+#### Директорія dist/
+Створюється автоматично при запуску `npm run build`. Містить оптимізовану, готову до продакшену версію проєкту.
+
+#### Директорія node_modules/
+Містить всі встановлені залежності. Див. `DEPENDENCIES.md` для детального пояснення призначення кожної залежності.
 
 ## 🔧 Вирішення проблем
 
