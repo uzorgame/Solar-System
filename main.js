@@ -3736,8 +3736,8 @@ function animate() {
             
             // Special handling for MAVEN: gradually rotate the orbit (precession)
             if (probe.name === "MAVEN") {
-              // Slowly rotate the orbit plane (precession effect)
-              const precessionSpeed = 0.00005; // Very slow rotation
+              // Rotate the orbit plane (precession effect)
+              const precessionSpeed = 0.0003; // Stronger rotation for visible orbit change
               probe.argumentOfPeriapsisOffset += precessionSpeed * realTimeMultiplier;
               if (probe.argumentOfPeriapsisOffset > 2 * Math.PI) {
                 probe.argumentOfPeriapsisOffset -= 2 * Math.PI;
