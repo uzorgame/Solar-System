@@ -3183,11 +3183,13 @@ celestialBodies.forEach((body) => {
         pivot: probePivot,
         orbit: orbit,
         orbitLine: orbitLine, // Store reference to orbit line
+        orbitGeometry: orbitGeometry, // Store reference to orbit geometry for updates
         meanAnomaly: meanAnomaly,
         name: probeData.name,
         info: probeData.info,
         body: body, // Store reference to body for Moon lookup
-        probeData: probeData // Store probe data for model update
+        probeData: probeData, // Store probe data for model update
+        argumentOfPeriapsisOffset: 0 // For MAVEN: gradual orbit rotation
       };
       
       // Store reference for GLB model update
@@ -3732,8 +3734,42 @@ function animate() {
               probe.meanAnomaly -= 2 * Math.PI;
             }
             
+            // Special handling for MAVEN: gradually rotate the orbit (precession)
+            if (probe.name === "MAVEN") {
+              // Slowly rotate the orbit plane (precession effect)
+              const precessionSpeed = 0.00005; // Very slow rotation
+              probe.argumentOfPeriapsisOffset += precessionSpeed * realTimeMultiplier;
+              if (probe.argumentOfPeriapsisOffset > 2 * Math.PI) {
+                probe.argumentOfPeriapsisOffset -= 2 * Math.PI;
+              }
+              
+              // Update orbit geometry with new argumentOfPeriapsis
+              if (probe.orbitGeometry) {
+                const orbitPoints = [];
+                const numPoints = 128;
+                const modifiedOrbit = {
+                  ...probe.orbit,
+                  argumentOfPeriapsis: (probe.orbit.argumentOfPeriapsis || 0) + probe.argumentOfPeriapsisOffset
+                };
+                for (let i = 0; i <= numPoints; i++) {
+                  const angle = (i / numPoints) * Math.PI * 2;
+                  const pos = calculateEllipticalOrbit(modifiedOrbit, angle);
+                  orbitPoints.push(new THREE.Vector3(pos.x, pos.y, pos.z));
+                }
+                probe.orbitGeometry.setFromPoints(orbitPoints);
+              }
+            }
+            
             // Calculate new position on elliptical orbit
-            const pos = calculateEllipticalOrbit(probe.orbit, probe.meanAnomaly);
+            // For MAVEN, use modified orbit with rotated argumentOfPeriapsis
+            let orbitToUse = probe.orbit;
+            if (probe.name === "MAVEN" && probe.argumentOfPeriapsisOffset !== undefined) {
+              orbitToUse = {
+                ...probe.orbit,
+                argumentOfPeriapsis: (probe.orbit.argumentOfPeriapsis || 0) + probe.argumentOfPeriapsisOffset
+              };
+            }
+            const pos = calculateEllipticalOrbit(orbitToUse, probe.meanAnomaly);
             probe.mesh.position.set(pos.x, pos.y, pos.z);
           }
         });
